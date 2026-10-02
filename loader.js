@@ -56,7 +56,12 @@
     }
     fit();
     window.addEventListener('resize', fit);
-    if (window.ResizeObserver) new ResizeObserver(fit).observe(document.documentElement);
+    // A scrollbar appears once the page content is in; re-fit whenever the block or the page changes size.
+    if (window.ResizeObserver) {
+      var ro = new ResizeObserver(function () { requestAnimationFrame(fit); });
+      ro.observe(host);
+      ro.observe(document.documentElement);
+    }
   }
 
   function mount(host) {
