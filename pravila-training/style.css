@@ -1,0 +1,375 @@
+/* Page rules */
+@layer page{
+:host{all:initial;display:block;background:#FBFAF7;-webkit-font-smoothing:antialiased;text-align:left}
+*{box-sizing:border-box}
+h1,h2,h3,p,ol,ul,figure,blockquote{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:#6A5AA8}a:hover{color:#1F1D22}
+
+summary{list-style:none}summary::-webkit-details-marker{display:none}
+details>summary [data-plus]{transition:transform .2s}
+details[open]>summary [data-plus]{transform:rotate(45deg)}
+@keyframes blink{50%{opacity:0}}
+@media(max-width:600px){
+section[data-screen-label]:not([data-screen-label^="01"]):not([data-screen-label^="10"]){padding-top:64px!important;padding-bottom:64px!important}
+section[data-screen-label]:not([data-screen-label^="10"])>[data-strip]{margin-top:-64px!important;margin-bottom:64px!important}
+[data-strip]>div{height:30px!important;font-size:13px!important;padding:0 20px!important}
+#top{padding-top:28px!important;padding-bottom:56px!important}
+#top h1{font-size:clamp(36px,10.6vw,48px)!important;margin-top:16px!important}
+#top [data-hsub]{font-size:19px!important;margin-top:16px!important}
+#top [data-hbody]{font-size:16px!important;margin-top:12px!important}
+#top [data-hcta]{margin-top:22px!important}
+a[data-cta]{display:flex!important;width:100%;justify-content:space-between!important}
+h2{font-size:clamp(30px,8.4vw,38px)!important;line-height:1.08!important}
+[data-sm11]{font-size:12px!important}
+[data-sm12]{font-size:13px!important}
+footer a{display:inline-block;padding:10px 0}
+summary{min-height:48px}
+}
+@media(max-width:760px){[data-revgrid]{grid-template-columns:1fr!important}}
+@keyframes checkHint{0%,8%,100%{color:transparent;background:transparent;border-color:#C9BEEB;transform:scale(1)}14%{color:#FFFFFF;background:#8C7BC4;border-color:#8C7BC4;transform:scale(1.12)}30%{color:#FFFFFF;background:#8C7BC4;border-color:#8C7BC4;transform:scale(1)}40%{color:transparent;background:transparent;border-color:#C9BEEB}}
+[data-any="false"] button[data-scene] [data-check]{animation:checkHint 9s ease-in-out infinite}
+[data-any="false"] li:nth-child(1) [data-check]{animation-delay:.4s}[data-any="false"] li:nth-child(2) [data-check]{animation-delay:5.2s}[data-any="false"] li:nth-child(3) [data-check]{animation-delay:2.6s}[data-any="false"] li:nth-child(4) [data-check]{animation-delay:7.1s}[data-any="false"] li:nth-child(5) [data-check]{animation-delay:1.5s}[data-any="false"] li:nth-child(6) [data-check]{animation-delay:3.9s}
+button[data-scene][aria-pressed="true"] [data-check]{animation:none!important}
+@media(prefers-reduced-motion:reduce){[data-check]{animation:none!important}}
+@keyframes nowPulse{0%{box-shadow:0 0 0 0 rgba(106,90,168,.45)}70%,100%{box-shadow:0 0 0 10px rgba(106,90,168,0)}}
+[data-nowdot]{animation:nowPulse 2.4s ease-out infinite}
+@media(prefers-reduced-motion:reduce){[data-nowdot]{animation:none}}
+@media(max-width:900px){[data-howgrid]{grid-template-columns:1fr!important}}
+@media(max-width:600px){[data-tlsteps]{grid-template-columns:repeat(2,minmax(0,1fr))!important;row-gap:28px!important}[data-tlline],[data-tlspan]{display:none!important}[data-tl]{padding-top:0!important}}
+@media(max-width:719px){[data-chapnum]{display:none}}
+@media(max-width:720px){[data-folio]{grid-template-columns:1fr!important}[data-margin]{border-right:0!important;text-align:left!important;display:flex;align-items:baseline;gap:10px;margin-bottom:8px}[data-margin] p:last-child{font-size:40px!important}[data-rh-title]{display:none}}
+@keyframes ctaPulse{0%,62%,100%{box-shadow:0 0 0 0 rgba(255,90,46,0)}70%{box-shadow:0 0 0 0 rgba(255,90,46,.55)}92%{box-shadow:0 0 0 16px rgba(255,90,46,0)}}
+@keyframes ctaNudge{0%,58%,100%{transform:translate(0,0)}64%{transform:translate(6px,0)}70%{transform:translate(0,0)}76%{transform:translate(6px,0)}82%{transform:translate(0,0)}}
+a[data-cta="on"]{animation:ctaPulse 3.2s ease-out infinite}
+a[data-cta="on"]>span{display:inline-block;animation:ctaNudge 3.2s ease-in-out infinite}
+a[data-cta]>b{font-weight:inherit}
+a[data-cta]:hover{animation:none}
+a[data-cta]:hover>span{animation:none;transform:translate(4px,-2px)}
+a[data-cta="nudge"]>span{animation:ctaNudge 3.2s ease-in-out infinite}
+a[data-cta="nudge"]:hover>span{animation:none;transform:translate(4px,-2px)}
+a:focus-visible,summary:focus-visible{outline:2px solid #8C7BC4;outline-offset:3px}
+@media(max-width:720px){header nav{display:none!important}}
+@media(prefers-reduced-motion:reduce){a[data-cta],a[data-cta]>span,[data-blink]{animation:none!important}}
+@media(max-width:640px){[data-weekband]{grid-template-columns:1fr!important}[data-weekband]>div{grid-column:auto!important}[data-weekgrid]{grid-template-columns:1fr!important;gap:6px!important}[data-weekgrid]>li{display:grid!important;grid-template-columns:44px 1fr;align-items:center}[data-weekgrid]>li>div{min-height:0!important;flex-direction:row!important;justify-content:space-between!important;align-items:baseline!important}}
+button[data-scene]:hover{border-color:#C9BEEB!important}
+button[data-scene][aria-pressed="true"]{border-color:#6A5AA8!important;background:#EEEAF8!important}
+button[data-scene][aria-pressed="true"] [data-check]{background:#6A5AA8;border-color:#6A5AA8!important;color:#FFFFFF!important}
+@media(max-width:960px){ol[data-steps4]{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:760px){ul[data-cols3]{grid-template-columns:1fr!important}}
+@media(max-width:520px){ol[data-steps4]{grid-template-columns:1fr!important}}
+@media(max-width:720px){[data-scenes="collapsed"] li[data-extra]{display:none!important}[data-scenes="collapsed"] button[data-more]{display:flex!important}}
+@media(max-width:1000px){[data-tree] [data-bar]{display:none}[data-tree] ol[data-branches]{grid-template-columns:1fr!important;gap:12px!important;margin-left:24px;border-left:1.5px solid #C9BEEB;padding-left:20px}[data-tree] [data-branch]{padding-top:0!important;max-width:560px}[data-tree] [data-branch]>div{align-items:flex-start!important;text-align:left!important}[data-tree] [data-stem]{left:-20px!important;top:28px!important;width:20px!important;height:1.5px!important}[data-tree]>div:first-child{align-items:flex-start!important;margin-left:0}[data-tree]>div:first-child>span{margin-left:24px}}
+.scp0:hover { color: rgb(31, 29, 34) !important; }
+.scp1:hover { background: rgb(37, 35, 42) !important; color: rgb(255, 255, 255) !important; }
+.scp2:hover { background: rgb(58, 55, 64) !important; color: rgb(255, 255, 255) !important; transform: translateY(-2px) !important; }
+.scp3:hover { border-color: rgb(140, 123, 196) !important; color: rgb(31, 29, 34) !important; }
+.scp4:hover { background: rgb(238, 234, 248) !important; color: rgb(37, 35, 42) !important; transform: translateY(-2px) !important; }
+}
+
+/* Element styles (former inline styles) */
+.s1{width: 100%; background: rgb(251, 250, 247); color: rgb(31, 29, 34); font-family: "Golos Text", system-ui, sans-serif; font-size: 17px; line-height: 1.65}
+.s2{position: sticky; top: 0px; z-index: 40; background: rgba(251, 250, 247, 0.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgb(232, 229, 223)}
+.s3{max-width: 1160px; margin: 0px auto; padding: 0px clamp(20px, 5vw, 32px); height: 60px; display: flex; align-items: center; gap: 24px}
+.s4{flex: 1 1 auto; min-width: 0px; display: flex; align-items: baseline; gap: 12px; text-decoration: none; color: rgb(31, 29, 34); white-space: nowrap; overflow: hidden}
+.s5{font-family: Onest, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase}
+.s6{font-family: "PT Mono", monospace; font-size: 13px; color: rgb(111, 108, 117); overflow: hidden; text-overflow: ellipsis}
+.s7{display: flex; gap: 22px; font-size: 14px}
+.s8{color: rgb(91, 88, 98); text-decoration: none}
+.s9{display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid rgb(37, 35, 42); color: rgb(31, 29, 34); text-decoration: none; font-family: Onest, sans-serif; font-weight: 700; font-size: 14px; padding: 0px 16px; min-height: 44px; border-radius: 999px; white-space: nowrap; flex: 0 0 auto; transition: background 0.2s, color 0.2s}
+.s10{color: rgb(140, 123, 196)}
+.s11{background: rgb(251, 250, 247); padding: clamp(40px, 6vw, 88px) clamp(20px, 5vw, 32px) clamp(64px, 8vw, 112px)}
+.s12{max-width: 1160px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 72px); align-items: center}
+.s13{flex: 1 1 440px; min-width: 0px; display: flex; flex-direction: column}
+.s14{display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-family: "PT Mono", monospace; font-size: 14px; letter-spacing: 0.04em; color: rgb(91, 88, 98)}
+.s15{width: 4px; height: 4px; border-radius: 50%; background: rgb(140, 123, 196)}
+.s16{color: rgb(31, 29, 34); font-weight: 700}
+.s17{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(48px, 6.4vw, 92px); letter-spacing: -0.035em; line-height: 0.96; text-wrap: balance; margin-top: 26px}
+.s18{white-space: nowrap}
+.s19{display: inline-block; width: 0.07em; height: 0.78em; background: rgb(140, 123, 196); margin-left: 0.1em; vertical-align: -0.04em; animation: 1.1s steps(1) 0s infinite normal none running blink}
+.s20{font-family: Onest, sans-serif; font-weight: 600; font-size: clamp(21px, 2vw, 27px); letter-spacing: -0.015em; line-height: 1.3; margin-top: 24px; text-wrap: pretty; max-width: 36ch}
+.s21{font-family: Literata, Georgia, serif; font-style: italic; font-weight: 500; color: rgb(106, 90, 168); letter-spacing: -0.01em}
+.s22{color: rgb(91, 88, 98); font-size: clamp(17px, 1.5vw, 19px); max-width: 52ch; margin-top: 16px; text-wrap: pretty}
+.s23{color: rgb(31, 29, 34); font-weight: 600}
+.s24{display: flex; flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 34px}
+.s25{display: inline-flex; align-items: center; gap: 20px; background: rgb(37, 35, 42); color: rgb(255, 255, 255); text-decoration: none; font-family: Onest, sans-serif; font-weight: 700; font-size: 17px; padding: 6px 6px 6px 26px; min-height: 60px; border-radius: 999px; transition: background 0.2s, transform 0.2s}
+.s26{display: block; width: 48px; height: 48px; flex: 0 0 auto; border-radius: 50%; box-shadow: rgba(255, 255, 255, 0.08) 0px 0px 0px 3px; transition: transform 0.2s}
+.s27{display: block}
+.s28{display: flex; flex-direction: column; gap: 6px; padding-left: 26px}
+.s29{font-size: 14px; color: rgb(111, 108, 117)}
+.s30{display: flex; flex-direction: column; gap: 4px; font-size: 15px; color: rgb(31, 29, 34)}
+.s31{display: flex; gap: 10px}
+.s32{color: rgb(106, 90, 168); font-family: "PT Mono", monospace}
+.s33{font-size: 13px; color: rgb(111, 108, 117); margin-top: 2px}
+.s34{position: relative; flex: 0 1 340px; min-width: 0px; margin: 0px auto; background: rgb(238, 234, 248); border-radius: 32px; padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 44px) clamp(24px, 3vw, 36px); display: flex; flex-direction: column; align-items: center; overflow: hidden}
+.s35{position: absolute; top: clamp(18px, 2.4vw, 28px); left: clamp(22px, 3vw, 34px); font-family: Literata, Georgia, serif; font-style: italic; font-size: clamp(18px, 1.6vw, 22px); color: rgb(140, 123, 196)}
+.s36{position: absolute; right: -0.06em; bottom: -0.22em; font-family: Literata, Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(160px, 20vw, 260px); line-height: 1; color: rgb(226, 220, 243); pointer-events: none}
+.s37{position: relative; width: 100%; max-width: 300px; margin-top: 12px}
+.s38{position: absolute; left: 13.75%; top: 95.7%; width: 81.4%; height: 26px; transform-origin: 0px 0px; transform: rotate(-7.83deg) translateY(-8px); background: linear-gradient(rgba(16, 16, 17, 0.28), rgba(16, 16, 17, 0)); filter: blur(5px); border-radius: 0px 0px 40% 40%}
+.s39{position: absolute; left: 13.75%; top: 95.7%; width: 81.4%; height: 8px; transform-origin: 0px 0px; transform: rotate(-7.83deg) translateY(-3px); background: rgba(16, 16, 17, 0.35); filter: blur(2px)}
+.s40{position: absolute; left: 6.25%; top: 91.35%; width: 10%; height: 8px; transform-origin: 0px 0px; transform: rotate(41.2deg) translateY(-3px); background: rgba(16, 16, 17, 0.3); filter: blur(2px)}
+.s41{position: relative; display: block; width: 100%; height: auto}
+.s42{position: relative; display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 6px 14px; margin-top: 28px; padding-top: 18px; border-top: 1px solid rgb(201, 190, 235); width: 100%; max-width: 340px}
+.s43{font-family: Onest, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: -0.03em; line-height: 1}
+.s44{font-size: 14px; color: rgb(91, 88, 98); line-height: 1.35}
+.s45{position: relative; margin-top: 12px; font-size: 13px; color: rgb(111, 108, 117); text-align: center; max-width: 32ch; text-wrap: balance}
+.s46{background: rgb(244, 241, 250); padding: clamp(88px, 12vw, 152px) clamp(20px, 5vw, 32px); position: relative; overflow: clip}
+.s47{position: sticky; top: 61px; z-index: 30; height: 0px; margin: calc(-1 * clamp(88px, 12vw, 152px)) calc(-1 * clamp(20px, 5vw, 32px)) clamp(88px, 12vw, 152px)}
+.s48{height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 0px clamp(20px, 5vw, 40px) 0px clamp(56px, 6vw, 72px); background: rgba(250, 249, 251, 0.94); border-bottom: 1px solid rgb(230, 225, 240); font-family: Literata, Georgia, serif; font-style: italic; font-size: 14px; color: rgb(91, 88, 98)}
+.s49{color: rgb(106, 90, 168)}
+.s50{position: absolute; top: 42px; right: max(clamp(20px, 5vw, 32px), 50% - 580px); font-family: Literata, Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(64px, 8vw, 120px); line-height: 1; letter-spacing: -0.04em; color: rgb(233, 227, 245); pointer-events: none; user-select: none; z-index: 0}
+.s51{position: relative; z-index: 1; max-width: 1160px; margin: 0px auto}
+.s52{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(30px, 3.6vw, 46px); letter-spacing: -0.025em; line-height: 1.08; text-wrap: balance; max-width: 760px}
+.s53{color: rgb(91, 88, 98); font-size: 16px; margin-top: 14px}
+.s54{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 16px; margin-top: 32px}
+.s55{display: flex}
+.s56{flex: 1 1 0%; display: flex; flex-direction: column; gap: 12px; text-align: left; font: inherit; color: inherit; background: rgb(255, 255, 255); border: 1px solid rgb(232, 229, 223); border-radius: 20px; padding: clamp(22px, 3vw, 30px); cursor: pointer; transition: border-color 0.2s, background 0.2s}
+.s57{display: flex; justify-content: space-between; align-items: flex-start; gap: 16px}
+.s58{font-family: Onest, sans-serif; font-weight: 600; font-size: clamp(20px, 2vw, 23px); letter-spacing: -0.015em; line-height: 1.3; text-wrap: pretty}
+.s59{flex: 0 0 auto; width: 26px; height: 26px; border-radius: 50%; border: 1.5px solid rgb(201, 190, 235); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: transparent; transition: background 0.2s, color 0.2s}
+.s60{font-size: 15px; color: rgb(91, 88, 98); line-height: 1.45; text-wrap: pretty}
+.s61{display: none; margin-top: 16px; width: 100%; min-height: 52px; align-items: center; justify-content: center; gap: 8px; font-style: inherit; font-variant: inherit; font-weight: 600; font-stretch: inherit; font-size: 16px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; color: rgb(31, 29, 34); background: transparent; border: 1px dashed rgb(201, 190, 235); border-radius: 16px; cursor: pointer}
+.s62{min-height: 1.6em; margin-top: 20px; font-size: 17px; font-weight: 600; color: rgb(106, 90, 168)}
+.s63{margin-top: clamp(40px, 5vw, 64px); background: rgb(238, 234, 248); border-radius: 24px; padding: clamp(28px, 5vw, 64px)}
+.s64{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(32px, 4vw, 54px); letter-spacing: -0.025em; line-height: 1.05; text-wrap: balance; max-width: 20ch}
+.s65{color: rgb(31, 29, 34); font-size: clamp(17px, 1.5vw, 20px); max-width: 58ch; margin-top: 22px; text-wrap: pretty}
+.s66{background: rgb(251, 250, 247); padding: clamp(88px, 12vw, 152px) clamp(20px, 5vw, 32px); position: relative; overflow: clip}
+.s67{position: absolute; top: 42px; right: max(clamp(20px, 5vw, 32px), 50% - 580px); font-family: Literata, Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(64px, 8vw, 120px); line-height: 1; letter-spacing: -0.04em; color: rgb(239, 235, 247); pointer-events: none; user-select: none; z-index: 0}
+.s68{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.4vw, 58px); letter-spacing: -0.025em; line-height: 1.02; text-wrap: balance; max-width: 960px}
+.s69{color: rgb(91, 88, 98)}
+.s70{color: rgb(91, 88, 98); font-size: clamp(17px, 1.5vw, 19px); max-width: 62ch; margin-top: 22px; text-wrap: pretty}
+.s71{margin-top: 44px}
+.s72{display: flex; flex-direction: column; align-items: center}
+.s73{background: rgb(31, 29, 34); color: rgb(255, 255, 255); border-radius: 999px; padding: 14px 28px; font-family: Onest, sans-serif; font-weight: 600; font-size: clamp(16px, 1.5vw, 19px); text-align: center}
+.s74{width: 1.5px; height: 28px; background: rgb(201, 190, 235)}
+.s75{height: 1.5px; background: rgb(201, 190, 235); margin: 0px 10%}
+.s76{display: grid; grid-template-columns: repeat(5, minmax(0px, 1fr)); gap: 14px}
+.s77{position: relative; display: flex; flex-direction: column; padding-top: 28px}
+.s78{position: absolute; left: 50%; top: 0px; width: 1.5px; height: 28px; background: rgb(201, 190, 235)}
+.s79{flex: 1 1 0%; display: flex; flex-direction: column; background: rgb(244, 241, 250); border: 1px solid rgb(233, 227, 245); border-radius: 18px; padding: 18px 18px 20px; align-items: center; text-align: center}
+.s80{font-family: Literata, Georgia, serif; font-style: italic; font-weight: 500; font-size: 44px; line-height: 1; color: rgb(191, 178, 236); margin-bottom: 6px}
+.s81{font-family: Onest, sans-serif; font-weight: 700; font-size: 19px; letter-spacing: -0.01em; line-height: 1.25}
+.s82{color: rgb(91, 88, 98); font-size: 15px; line-height: 1.5; margin-top: 8px; text-wrap: pretty}
+.s83{text-align: center; font-size: 15px; font-weight: 600; color: rgb(106, 90, 168); margin-top: 18px}
+.s84{margin-top: clamp(40px, 5vw, 64px); background: rgb(238, 234, 248); border-radius: 24px; padding: clamp(28px, 5vw, 56px)}
+.s85{font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(106, 90, 168)}
+.s86{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(32px, 4vw, 54px); letter-spacing: -0.025em; line-height: 1.05; margin-top: 14px; text-wrap: balance}
+.s87{display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 14px; margin-top: 32px}
+.s88{background: rgb(255, 255, 255); border-radius: 20px; padding: clamp(22px, 3vw, 30px); display: flex; flex-direction: column; gap: 12px}
+.s89{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(21px, 2vw, 25px); letter-spacing: -0.015em; line-height: 1.2; text-wrap: balance}
+.s90{color: rgb(91, 88, 98); font-size: 16px; line-height: 1.55; text-wrap: pretty}
+.s91{display: flex; align-items: center; gap: 14px; font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(106, 90, 168); margin-bottom: 22px}
+.s92{width: 34px; height: 1px; background: rgb(201, 190, 235)}
+.s93{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.4vw, 58px); letter-spacing: -0.025em; line-height: 1.05; text-wrap: balance; max-width: 900px}
+.s94{color: rgb(91, 88, 98); font-size: clamp(17px, 1.5vw, 19px); max-width: 60ch; margin-top: 22px; text-wrap: pretty}
+.s95{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: clamp(24px, 4vw, 56px); align-items: start; margin-top: clamp(40px, 5vw, 56px)}
+.s96{display: flex; flex-direction: column; gap: 32px}
+.s97{background: rgb(255, 255, 255); border: 1px solid rgb(232, 229, 223); border-radius: 20px; padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column}
+.s98{font-family: "PT Mono", monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(91, 88, 98)}
+.s99{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(88px, 10vw, 128px); letter-spacing: -0.05em; line-height: 0.9; margin-top: 28px}
+.s100{font-family: Onest, sans-serif; font-weight: 600; font-size: 22px; line-height: 1.2; margin-top: 8px}
+.s101{width: 44px; height: 1.5px; background: rgb(201, 190, 235); margin: 24px 0px 18px}
+.s102{color: rgb(91, 88, 98); font-size: 16px; text-wrap: pretty}
+.s103{padding: 0px 4px}
+.s104{font-family: Literata, Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(18px, 1.7vw, 21px); line-height: 1.4; text-wrap: pretty}
+.s105{margin-top: 12px; font-size: 14px; color: rgb(111, 108, 117)}
+.s106{display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; padding-bottom: 18px}
+.s107{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(24px, 2.4vw, 30px); letter-spacing: -0.02em; margin-right: 6px}
+.s108{border-bottom: 1px solid rgb(232, 229, 223)}
+.s109{display: grid; grid-template-columns: 40px minmax(0px, 1fr); gap: 12px; padding: 22px 0px; border-top: 1px solid rgb(232, 229, 223)}
+.s110{font-family: "PT Mono", monospace; font-size: 13px; color: rgb(106, 90, 168); padding-top: 5px}
+.s111{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(19px, 1.8vw, 22px); letter-spacing: -0.01em; line-height: 1.3}
+.s112{color: rgb(91, 88, 98); font-size: 16px; margin-top: 6px; text-wrap: pretty}
+.s113{margin-top: clamp(40px, 5vw, 56px); background: rgb(238, 234, 248); border-radius: 24px; padding: clamp(24px, 4vw, 40px)}
+.s114{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -0.02em}
+.s115{display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 12px; margin-top: 20px}
+.s116{background: rgb(255, 255, 255); border-radius: 16px; padding: 20px 22px; display: flex; flex-direction: column; gap: 8px}
+.s117{font-family: Onest, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: -0.01em; line-height: 1.3}
+.s118{color: rgb(91, 88, 98); font-size: 15px; line-height: 1.5; text-wrap: pretty}
+.s119{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.4vw, 58px); letter-spacing: -0.025em; line-height: 1.04; text-wrap: balance; max-width: 880px}
+.s120{font-family: "PT Mono", monospace; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: rgb(111, 108, 117); margin-top: clamp(48px, 6vw, 72px)}
+.s121{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 14px; margin-top: 18px}
+.s122{background: transparent; border-width: 1px 0px 0px; border-top-style: solid; border-right-style: initial; border-bottom-style: initial; border-left-style: initial; border-top-color: rgb(220, 211, 241); border-right-color: initial; border-bottom-color: initial; border-left-color: initial; border-image: initial; border-radius: 0px; padding: 20px 0px 0px; display: flex; flex-direction: column; gap: 14px}
+.s123{font-family: Literata, Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(17px, 1.5vw, 19px); line-height: 1.45; text-wrap: pretty}
+.s124{margin-top: auto; font-size: 14px; color: rgb(111, 108, 117)}
+.s125{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(26px, 3vw, 38px); letter-spacing: -0.02em; line-height: 1.2; margin-top: clamp(56px, 7vw, 88px); max-width: 30ch; text-wrap: balance}
+.s126{display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; margin-top: clamp(40px, 5vw, 56px)}
+.s127{display: flex; flex-direction: column; align-items: flex-start; gap: 12px}
+.s128{color: rgb(111, 108, 117); font-size: 14px; padding-left: 26px}
+.s129{display: flex; align-items: center; gap: 14px; font-family: "PT Mono", monospace; font-size: 14px; letter-spacing: 0.06em; color: rgb(106, 90, 168); margin-bottom: 22px}
+.s130{width: 34px; height: 1px; background: rgb(140, 123, 196)}
+.s131{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.4vw, 58px); letter-spacing: -0.025em; line-height: 1.02; text-wrap: balance}
+.s132{color: rgb(91, 88, 98); font-size: clamp(17px, 1.5vw, 19px); max-width: 62ch; margin-top: 22px}
+.s133{display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 14px}
+.s134{position: relative; padding-left: 32px; border-top: 1px solid rgb(232, 229, 223); margin-top: clamp(36px, 4vw, 48px)}
+.s135{position: absolute; left: 7px; top: 34px; bottom: 34px; width: 2px; background: rgb(225, 217, 242)}
+.s136{position: relative; display: grid; grid-template-columns: clamp(52px, 7vw, 84px) minmax(0px, 1fr) auto; gap: clamp(12px, 2vw, 24px); align-items: start; padding: clamp(20px, 2.4vw, 28px) 0px; cursor: pointer}
+.s137{position: absolute; left: -32px; top: clamp(26px, 3vw, 36px); width: 16px; height: 16px; border-radius: 50%; background: rgb(255, 255, 255); border: 2px solid rgb(191, 178, 236); box-sizing: border-box}
+.s138{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); line-height: 1; letter-spacing: -0.03em; color: rgb(140, 123, 196)}
+.s139{display: flex; flex-direction: column; gap: 6px; min-width: 0px}
+.s140{font-family: "PT Mono", monospace; font-size: 13px; color: rgb(111, 108, 117)}
+.s141{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(19px, 1.9vw, 23px); line-height: 1.25; letter-spacing: -0.01em; color: rgb(31, 29, 34)}
+.s142{font-size: 16px; line-height: 1.5; color: rgb(91, 88, 98); text-wrap: pretty}
+.s143{color: rgb(106, 90, 168); font-family: "PT Mono", monospace; font-size: 24px; line-height: 1; padding-top: 4px}
+.s144{margin: 0px 0px clamp(20px, 2.4vw, 28px) clamp(0px, -639360px + 99900vw, clamp(52px, 7vw, 84px) + clamp(12px, 2vw, 24px)); max-width: 680px; display: flex; flex-direction: column}
+.s145{display: flex; flex-wrap: wrap; gap: 2px 16px; padding: 12px 0px; border-top: 1px solid rgb(232, 229, 223)}
+.s146{flex: 0 0 132px; font-family: "PT Mono", monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(106, 90, 168); padding-top: 3px}
+.s147{flex: 1 1 260px; min-width: 0px; font-size: 16px; line-height: 1.5; color: rgb(91, 88, 98); text-wrap: pretty}
+.s148{padding: 0px 0px 14px; font-size: 16px; line-height: 1.5; color: rgb(91, 88, 98); text-wrap: pretty}
+.s149{color: rgb(31, 29, 34); font-style: italic}
+.s150{font-size: 14px; color: rgb(111, 108, 117); margin-top: 16px; text-wrap: pretty}
+.s151{margin-top: clamp(40px, 5vw, 56px)}
+.s152{background: rgb(255, 255, 255); border: 1px solid rgb(232, 229, 223); border-radius: 20px; padding: clamp(20px, 3vw, 28px)}
+.s153{display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px}
+.s154{font-family: Onest, sans-serif; font-weight: 700; font-size: 24px; letter-spacing: -0.01em}
+.s155{display: grid; grid-template-columns: repeat(7, minmax(0px, 1fr)); gap: 8px; margin-top: 20px}
+.s156{font-family: "PT Mono", monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(111, 108, 117)}
+.s157{flex: 1 1 0%; min-height: 104px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; padding: 12px; border-radius: 14px; background: rgb(238, 234, 248); border: none}
+.s158{font-family: Onest, sans-serif; font-weight: 700; font-size: 15px; line-height: 1.25; color: rgb(31, 29, 34)}
+.s159{font-size: 13px; line-height: 1.35; color: rgb(91, 88, 98)}
+.s160{flex: 1 1 0%; min-height: 104px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; padding: 12px; border-radius: 14px; background: rgb(244, 242, 238); border: none}
+.s161{flex: 1 1 0%; min-height: 104px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; padding: 12px; border-radius: 14px; background: rgb(255, 255, 255); border: 1px solid rgb(201, 190, 235)}
+.s162{flex: 1 1 0%; min-height: 104px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; padding: 12px; border-radius: 14px; background: rgb(106, 90, 168); border: none}
+.s163{font-family: Onest, sans-serif; font-weight: 700; font-size: 15px; line-height: 1.25; color: rgb(255, 255, 255)}
+.s164{font-size: 13px; line-height: 1.35; color: rgb(238, 234, 248)}
+.s165{flex: 1 1 0%; min-height: 104px; display: flex; flex-direction: column; justify-content: space-between; gap: 8px; padding: 12px; border-radius: 14px; background: transparent; border: 1px dashed rgb(217, 213, 206)}
+.s166{font-family: Onest, sans-serif; font-weight: 700; font-size: 15px; line-height: 1.25; color: rgb(111, 108, 117)}
+.s167{font-size: 13px; line-height: 1.35; color: rgb(111, 108, 117)}
+.s168{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 8px; margin-top: 20px}
+.s169{display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border-radius: 14px; background: rgb(244, 242, 238)}
+.s170{font-family: Onest, sans-serif; font-weight: 700; font-size: 16px; line-height: 1.3; color: rgb(31, 29, 34)}
+.s171{font-size: 14px; line-height: 1.45; color: rgb(91, 88, 98); text-wrap: pretty}
+.s172{margin-top: 12px; font-size: 14px}
+.s173{display: flex; flex-direction: column; align-items: flex-start; gap: 12px; flex: 0 0 auto}
+.s174{position: relative; z-index: 1; max-width: 1160px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: clamp(36px, 6vw, 80px); align-items: flex-start}
+.s175{display: block; flex: 0 1 300px; min-width: 0px; max-width: min(100%, 340px); height: auto; border-radius: 20px}
+.s176{flex: 1 1 400px; min-width: 0px}
+.s177{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.4vw, 58px); letter-spacing: -0.025em; line-height: 1.02}
+.s178{font-family: Literata, Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(19px, 1.8vw, 23px); line-height: 1.4; letter-spacing: -0.01em; max-width: 58ch; margin-top: 22px; text-wrap: pretty}
+.s179{font-size: clamp(17px, 1.5vw, 19px); max-width: 58ch; margin-top: 22px; text-wrap: pretty}
+.s180{font-weight: 600}
+.s181{display: flex; flex-direction: column; gap: 6px; max-width: 58ch; margin-top: 22px; padding-top: 18px; border-top: 1px solid rgb(232, 229, 223); color: rgb(91, 88, 98); font-size: 16px}
+.s182{display: grid; grid-template-columns: 14px 1fr; gap: 8px}
+.s183{max-width: 58ch; margin-top: 26px; padding: 20px 22px; border-radius: 16px; background: rgb(238, 234, 248); display: flex; flex-direction: column; gap: 10px}
+.s184{font-family: Literata, Georgia, serif; font-style: italic; font-weight: 400; font-size: 17px; line-height: 1.45; color: rgb(31, 29, 34); text-wrap: pretty}
+.s185{display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; font-size: 14px}
+.s186{color: rgb(31, 29, 34); text-decoration: none; border: 1px solid rgb(217, 213, 206); border-radius: 6px; padding: 6px 12px}
+.s187{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.4vw, 58px); letter-spacing: -0.025em; line-height: 1.02; text-wrap: balance; max-width: 860px}
+.s188{display: flex; flex-wrap: wrap; gap: 20px clamp(32px, 5vw, 64px); margin-top: 28px}
+.s189{display: flex; flex-direction: column; gap: 6px; padding-right: clamp(24px, 4vw, 56px); border-right: 1px solid rgb(220, 211, 241)}
+.s190{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(40px, 4.6vw, 60px); letter-spacing: -0.03em; line-height: 1; color: rgb(31, 29, 34)}
+.s191{font-size: 14px; color: rgb(91, 88, 98)}
+.s192{display: flex; flex-direction: column; gap: 6px}
+.s193{display: grid; grid-template-columns: repeat(3, minmax(0px, 1fr)); gap: 16px; margin-top: 40px}
+.s194{grid-column: 1 / -1; padding: clamp(22px, 3vw, 30px); background: rgb(255, 255, 255); border: 1px solid rgb(232, 229, 223); border-radius: 20px; display: flex; flex-direction: column; gap: 16px}
+.s195{font-family: Onest, sans-serif; font-weight: 700; font-size: 48px; line-height: 0.6; color: rgb(140, 123, 196); height: 22px}
+.s196{font-size: clamp(17px, 1.5vw, 19px); line-height: 1.45; font-family: Literata, Georgia, serif; font-style: italic; font-weight: 400; text-wrap: pretty}
+.s197{background: rgb(255, 255, 255); border: 1px solid rgb(232, 229, 223); border-radius: 20px; padding: clamp(22px, 3vw, 30px); display: flex; flex-direction: column; gap: 16px}
+.s198{color: rgb(111, 108, 117)}
+.s199{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); grid-auto-flow: row; gap: 4px clamp(24px, 4vw, 56px); margin-top: 32px; font-size: 17px; line-height: 1.5}
+.s200{display: flex; gap: 14px; align-items: baseline; padding: 12px 0px}
+.s201{flex: 0 0 auto; width: 7px; height: 7px; border-radius: 50%; background: rgb(140, 123, 196); transform: translateY(-2px)}
+.s202{text-wrap: pretty}
+.s203{margin-top: 20px; font-size: 15px; color: rgb(91, 88, 98); text-wrap: pretty}
+.s204{background: rgb(238, 234, 248); color: rgb(31, 29, 34); padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 32px); position: relative; overflow: clip}
+.s205{position: sticky; top: 61px; z-index: 30; height: 0px; margin: calc(-1 * clamp(56px, 8vw, 96px)) calc(-1 * clamp(20px, 5vw, 32px)) clamp(56px, 8vw, 96px)}
+.s206{position: absolute; top: 42px; right: max(clamp(20px, 5vw, 32px), 50% - 580px); font-family: Literata, Georgia, serif; font-style: italic; font-weight: 500; font-size: clamp(64px, 8vw, 120px); line-height: 1; letter-spacing: -0.04em; color: rgb(225, 217, 242); pointer-events: none; user-select: none; z-index: 0}
+.s207{color: rgb(91, 88, 98); font-size: clamp(17px, 1.5vw, 19px)}
+.s208{display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: clamp(18px, 2.4vw, 28px)}
+.s209{font-family: Literata, Georgia, serif; font-style: italic; font-size: clamp(18px, 1.8vw, 24px); color: rgb(111, 108, 117); text-decoration: line-through 2px rgb(191, 178, 236)}
+.s210{font-family: "PT Mono", monospace; font-size: 20px; color: rgb(106, 90, 168)}
+.s211{position: relative; font-family: Literata, Georgia, serif; font-style: italic; font-weight: 400; font-size: clamp(44px, 6.4vw, 92px); letter-spacing: -0.02em; line-height: 1.08; text-wrap: balance; margin-top: 14px; padding-bottom: 0.08em}
+.s212{font-family: "PT Mono", monospace; font-size: 14px; color: rgb(106, 90, 168); margin-top: 12px}
+.s213{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 20px; margin-top: 40px; align-items: stretch}
+.s214{background: rgb(255, 255, 255); border: 1px solid rgb(217, 213, 206); border-radius: 20px; padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; position: relative}
+.s215{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(26px, 2.6vw, 32px); letter-spacing: -0.02em}
+.s216{color: rgb(91, 88, 98); font-size: 16px; margin-top: 10px; text-wrap: pretty}
+.s217{display: flex; flex-direction: column; gap: 10px; margin-top: 22px; margin-bottom: 28px; font-size: 16px}
+.s218{display: flex; gap: 12px; line-height: 1.45}
+.s219{flex: 1 1 0%; min-width: 0px; color: rgb(31, 29, 34); font-weight: 600; text-wrap: pretty}
+.s220{border-top: 1px solid rgb(232, 229, 223); margin-top: auto; padding-top: 20px}
+.s221{display: flex; flex-direction: column; gap: 4px}
+.s222{font-family: Onest, sans-serif; font-weight: 700; font-size: 52px; letter-spacing: -0.03em; line-height: 1.05}
+.s223{font-family: Onest, sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: rgb(91, 88, 98)}
+.s224{font-size: 13px; color: rgb(111, 108, 117); margin-top: 4px}
+.s225{font-family: "PT Mono", monospace; font-size: 13px; color: rgb(91, 88, 98); margin-top: 6px}
+.s226{margin-top: 22px}
+.s227{display: flex; justify-content: space-between; align-items: center; gap: 20px; background: rgb(37, 35, 42); color: rgb(255, 255, 255); text-decoration: none; font-family: Onest, sans-serif; font-weight: 700; font-size: 17px; padding: 6px 6px 6px 26px; min-height: 60px; border-radius: 999px; transition: background 0.2s, transform 0.2s}
+.s228{margin-top: 10px; font-size: 13px; color: rgb(111, 108, 117); text-align: center}
+.s229{background: radial-gradient(120% 60% at 100% 0%, rgba(140, 123, 196, 0.22), rgba(140, 123, 196, 0) 60%) rgb(37, 35, 42); color: rgb(255, 255, 255); border: 1px solid rgb(74, 68, 88); border-radius: 20px; box-shadow: rgba(74, 58, 140, 0.55) 0px 28px 70px -32px, rgba(191, 178, 236, 0.25) 0px 1px 0px inset; padding: clamp(22px, 3vw, 32px); display: flex; flex-direction: column; position: relative}
+.s230{position: absolute; top: -12px; right: 24px; background: rgb(191, 178, 236); color: rgb(37, 35, 42); font-family: "PT Mono", monospace; font-size: 12px; letter-spacing: 0.06em; padding: 4px 10px; border-radius: 6px}
+.s231{color: rgb(201, 197, 209); font-size: 16px; margin-top: 10px; text-wrap: pretty}
+.s232{margin-top: 20px; margin-bottom: 28px; display: flex; flex-direction: column; gap: 18px}
+.s233{font-size: 15px; font-weight: 600; color: rgb(255, 255, 255)}
+.s234{font-weight: 400; color: rgb(201, 197, 209)}
+.s235{background: rgb(52, 48, 61); border-radius: 16px; padding: 18px 20px}
+.s236{font-family: "PT Mono", monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(191, 178, 236)}
+.s237{display: flex; flex-direction: column; gap: 10px; margin-top: 12px; font-size: 16px}
+.s238{color: rgb(191, 178, 236); font-family: "PT Mono", monospace}
+.s239{flex: 1 1 0%; min-width: 0px; text-wrap: pretty}
+.s240{color: rgb(255, 255, 255); font-weight: 600}
+.s241{margin-top: -8px; font-size: 14px; color: rgb(201, 197, 209); text-wrap: pretty}
+.s242{margin-top: 6px; margin-bottom: 24px; font-size: 14px}
+.s243{color: rgb(191, 178, 236); font-weight: 600}
+.s244{border-top: 1px solid rgb(69, 65, 77); margin-top: auto; padding-top: 20px}
+.s245{font-family: Literata, Georgia, serif; font-weight: 500; font-size: 56px; letter-spacing: -0.03em; line-height: 1.05}
+.s246{font-family: Onest, sans-serif; font-weight: 600; font-size: 20px; letter-spacing: -0.01em; color: rgb(201, 197, 209)}
+.s247{font-size: 13px; color: rgb(169, 164, 179); margin-top: 4px}
+.s248{font-family: "PT Mono", monospace; font-size: 13px; color: rgb(201, 197, 209); margin-top: 6px}
+.s249{display: flex; justify-content: space-between; align-items: center; gap: 20px; background: rgb(255, 255, 255); color: rgb(37, 35, 42); text-decoration: none; font-family: Onest, sans-serif; font-weight: 700; font-size: 17px; padding: 6px 6px 6px 26px; min-height: 60px; border-radius: 999px; transition: background 0.2s, transform 0.2s}
+.s250{margin-top: 10px; font-size: 13px; color: rgb(169, 164, 179); text-align: center}
+.s251{margin-top: 20px; background: rgb(255, 255, 255); border: 1px solid rgb(231, 225, 244); border-radius: 20px; padding: clamp(22px, 3vw, 36px)}
+.s252{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(24px, 2.4vw, 30px); letter-spacing: -0.02em}
+.s253{display: grid; grid-template-columns: minmax(0px, 1.75fr) minmax(0px, 1fr); gap: clamp(24px, 4vw, 48px); margin-top: 24px; align-items: start}
+.s254{position: relative; padding-top: 34px}
+.s255{position: absolute; left: 6px; right: 6px; top: 40px; height: 2px; background: rgb(225, 217, 242)}
+.s256{position: absolute; left: calc(25% + 11px); width: calc(25% + 4px); top: 6px; height: 22px; border-width: 1.5px 1.5px 0px; border-top-style: solid; border-right-style: solid; border-bottom-style: initial; border-left-style: solid; border-top-color: rgb(140, 123, 196); border-right-color: rgb(140, 123, 196); border-bottom-color: initial; border-left-color: rgb(140, 123, 196); border-image: initial; border-radius: 10px 10px 0px 0px; display: flex; justify-content: center}
+.s257{position: relative; top: -11px; padding: 0px 8px; background: rgb(255, 255, 255); font-family: "PT Mono", monospace; font-size: 12px; color: rgb(106, 90, 168)}
+.s258{position: relative; display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 16px}
+.s259{position: relative; display: flex; flex-direction: column; gap: 2px; min-width: 0px}
+.s260{width: 14px; height: 14px; border-radius: 50%; margin-bottom: 18px; background: rgb(106, 90, 168); box-sizing: border-box}
+.s261{font-family: "PT Mono", monospace; font-size: 12px; color: rgb(111, 108, 117)}
+.s262{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(28px, 3vw, 40px); line-height: 1.05; letter-spacing: -0.02em; color: rgb(106, 90, 168)}
+.s263{font-family: "PT Mono", monospace; font-size: 12px; color: rgb(111, 108, 117); min-height: 1.4em}
+.s264{font-family: Onest, sans-serif; font-weight: 700; font-size: 16px; line-height: 1.3; margin-top: 8px}
+.s265{width: 14px; height: 14px; border-radius: 50%; margin-bottom: 18px; background: rgb(255, 255, 255); border: 2px solid rgb(191, 178, 236); box-sizing: border-box}
+.s266{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(28px, 3vw, 40px); line-height: 1.05; letter-spacing: -0.02em; color: rgb(31, 29, 34)}
+.s267{background: rgb(244, 241, 250); border-radius: 16px; padding: 20px 22px}
+.s268{font-family: Onest, sans-serif; font-weight: 700; font-size: 16px}
+.s269{display: flex; flex-direction: column; gap: 14px; margin-top: 14px}
+.s270{display: flex; gap: 12px}
+.s271{flex: 0 0 auto; color: rgb(106, 90, 168); font-family: "PT Mono", monospace}
+.s272{min-width: 0px}
+.s273{display: block; font-weight: 600; font-size: 15px; color: rgb(31, 29, 34)}
+.s274{display: block; font-size: 14px; line-height: 1.45; color: rgb(91, 88, 98); text-wrap: pretty}
+.s275{display: flex; flex-wrap: wrap; align-items: center; gap: 12px 32px; margin-top: 20px; background: rgb(238, 234, 248); color: rgb(31, 29, 34); border-radius: 20px; padding: clamp(22px, 3vw, 32px)}
+.s276{flex: 0 0 auto; display: block; transform: rotate(-8deg)}
+.s277{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.02em; line-height: 1.1; color: rgb(106, 90, 168); flex: 0 0 auto}
+.s278{flex: 1 1 320px; font-size: 17px; text-wrap: pretty}
+.s279{position: relative; z-index: 1; max-width: 1160px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: clamp(32px, 5vw, 64px); align-items: flex-start}
+.s280{flex: 1 1 300px; font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(34px, 4.4vw, 58px); letter-spacing: -0.025em; line-height: 1.02; text-wrap: balance}
+.s281{border-top: 1px solid rgb(232, 229, 223); flex: 2 1 560px; min-width: 0px}
+.s282{border-bottom: 1px solid rgb(232, 229, 223); scroll-margin-top: 110px}
+.s283{display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 0px; cursor: pointer; font-family: Onest, sans-serif; font-weight: 700; font-size: 19px; line-height: 1.3}
+.s284{color: rgb(106, 90, 168); font-family: "PT Mono", monospace; font-size: 22px; line-height: 1}
+.s285{display: flex; flex-direction: column; gap: 12px; padding-bottom: 24px; color: rgb(91, 88, 98); font-size: 16px; max-width: 68ch}
+.s286{background: rgb(251, 250, 247); color: rgb(31, 29, 34); position: relative; overflow: clip; padding: clamp(88px, 12vw, 152px) clamp(20px, 5vw, 32px) clamp(40px, 5vw, 56px)}
+.s287{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); gap: clamp(40px, 6vw, 64px); align-items: start}
+.s288{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(36px, 4.8vw, 64px); letter-spacing: -0.025em; line-height: 1.02; text-wrap: balance}
+.s289{display: inline-block; width: 0.08em; height: 0.8em; background: rgb(140, 123, 196); margin-left: 0.12em; vertical-align: -0.05em; animation: 1.1s steps(1) 0s infinite normal none running blink}
+.s290{color: rgb(91, 88, 98); font-size: clamp(17px, 1.5vw, 19px); max-width: 48ch; margin-top: 22px}
+.s291{font-family: Onest, sans-serif; font-weight: 600; font-size: clamp(18px, 1.7vw, 21px); line-height: 1.4; max-width: 44ch; margin-top: 18px; color: rgb(31, 29, 34); text-wrap: pretty}
+.s292{display: flex; flex-direction: column; align-items: flex-start; gap: 12px; margin-top: 32px}
+.s293{color: rgb(111, 108, 117); font-size: 14px}
+.s294{background: rgb(255, 255, 255); border: 1px solid rgb(232, 229, 223); border-radius: 20px; padding: clamp(18px, 4vw, 28px)}
+.s295{font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.06em; color: rgb(91, 88, 98); margin-bottom: 12px}
+.s296{display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: clamp(6px, 1vw, 10px); margin-bottom: 12px}
+.s297{display: flex; flex-direction: column; align-items: center; gap: 8px}
+.s298{width: 100%; text-align: center; background: rgb(255, 255, 255); border: 1px solid rgb(217, 213, 206); border-radius: 10px; padding: clamp(10px, 1.4vw, 16px) 0px; font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums}
+.s299{font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgb(111, 108, 117)}
+.s300{width: 100%; text-align: center; background: rgb(255, 255, 255); border: 1px solid rgb(201, 190, 235); border-radius: 10px; padding: clamp(10px, 1.4vw, 16px) 0px; font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(32px, 4vw, 52px); letter-spacing: -0.03em; line-height: 1; font-variant-numeric: tabular-nums; color: rgb(106, 90, 168)}
+.s301{margin-top: 14px; font-size: 13px; color: rgb(91, 88, 98); text-align: center}
+.s302{font-family: "PT Mono", monospace; font-size: 14px; color: rgb(106, 90, 168); text-align: center; margin-top: 8px}
+.s303{display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-top: 72px; padding-top: 24px; border-top: 1px solid rgb(232, 229, 223); font-size: 13px; color: rgb(111, 108, 117)}
+.s304{display: flex; flex-wrap: wrap; gap: 20px}
+.s305{color: rgb(111, 108, 117); text-decoration: none}
