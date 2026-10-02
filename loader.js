@@ -62,6 +62,7 @@
       ro.observe(host);
       ro.observe(document.documentElement);
     }
+    return fit;
   }
 
   function mount(host) {
@@ -74,7 +75,7 @@
     var css = { all: 'initial', display: 'block', 'min-height': '100vh' };
     if (host.hasAttribute('data-fullbleed')) css['max-width'] = 'none';
     for (var k in css) host.style.setProperty(k, css[k], 'important');
-    if (host.hasAttribute('data-fullbleed')) fullbleed(host);
+    var refit = host.hasAttribute('data-fullbleed') ? fullbleed(host) : function () {};
     var root = host.attachShadow ? host.attachShadow({ mode: 'open' }) : host;
 
     Promise.all([get(pageBase + 'page.html').then(function (s) { return resolveIncludes(s, pageBase); }),
@@ -82,6 +83,8 @@
       .then(function (res) {
         root.innerHTML = res[0];
         host.style.removeProperty('min-height');
+        refit();
+        setTimeout(refit, 300);
         if (location.hash) {
           var el = root.getElementById && root.getElementById(location.hash.slice(1));
           if (el) setTimeout(function () { el.scrollIntoView(); }, 50);
