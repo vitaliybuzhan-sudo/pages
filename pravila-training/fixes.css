@@ -1,0 +1,7 @@
+/* Ручные правки поверх сборки из Claude Design. При пересборке страницы конвертером номера классов (.sNN) меняются — перепроверить. */
+@media(max-width:600px){
+.s173{flex:1 1 100%;min-width:0;max-width:100%;align-items:stretch}
+}
+@media(max-width:380px){
+.s211{font-size:clamp(34px,11vw,44px)}
+}
