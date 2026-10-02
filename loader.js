@@ -46,6 +46,19 @@
     });
   }
 
+  // Stretch the block to the page width (without the scrollbar, unlike 100vw), even inside a narrow container.
+  function fullbleed(host) {
+    function fit() {
+      host.style.setProperty('width', document.documentElement.clientWidth + 'px', 'important');
+      host.style.setProperty('margin-left', '0px', 'important');
+      var left = host.getBoundingClientRect().left;
+      host.style.setProperty('margin-left', -left + 'px', 'important');
+    }
+    fit();
+    window.addEventListener('resize', fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(document.documentElement);
+  }
+
   function mount(host) {
     if (host.__ghMounted) return;
     host.__ghMounted = true;
@@ -54,12 +67,9 @@
 
     // Shield the host element itself from site CSS (inline !important beats any stylesheet rule).
     var css = { all: 'initial', display: 'block', 'min-height': '100vh' };
-    if (host.hasAttribute('data-fullbleed')) {
-      css.width = '100vw';
-      css['max-width'] = 'none';
-      css['margin-left'] = 'calc(50% - 50vw)';
-    }
+    if (host.hasAttribute('data-fullbleed')) css['max-width'] = 'none';
     for (var k in css) host.style.setProperty(k, css[k], 'important');
+    if (host.hasAttribute('data-fullbleed')) fullbleed(host);
     var root = host.attachShadow ? host.attachShadow({ mode: 'open' }) : host;
 
     Promise.all([get(pageBase + 'page.html').then(function (s) { return resolveIncludes(s, pageBase); }),
