@@ -6,10 +6,12 @@
 const STORAGE_KEY = 'selfguide:anxiety:visitor-offer:v1';
 const DURATION_MS = 60 * 60 * 1000;
 const CHECKOUT_ENABLED = true;
+// Учет ветки B (funnels/anx.ab): к каждой ссылке оплаты добавляется метка ветки.
+const BRANCH = 'utm_source=web&utm_content=branchB';
 const CHECKOUT_URLS = Object.freeze({
-  year: 'https://vitaliybuzhan.ru/anxiety-mvp-checkout-year',
-  forever: 'https://vitaliybuzhan.ru/anxiety-mvp-checkout-forever',
-  full: 'https://vitaliybuzhan.ru/anxiety-mvp-checkout-full'
+  year: 'https://vitaliybuzhan.ru/anxiety-mvp-checkout-year?' + BRANCH,
+  forever: 'https://vitaliybuzhan.ru/anxiety-mvp-checkout-forever?' + BRANCH,
+  full: 'https://vitaliybuzhan.ru/anxiety-mvp-checkout-full?' + BRANCH
 });
 
 export default function init(root, host) {
