@@ -1,1 +1,9 @@
 /* ручные правки верстки */
+/* Плавающий таймер */
+.float{position:fixed;left:50%;bottom:max(16px,env(safe-area-inset-bottom));transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:12px;max-width:calc(100% - 32px);padding:8px 8px 8px 20px;border-radius:999px;background:var(--btn);color:#fff;text-decoration:none;font-family:Onest,sans-serif;font-weight:600;font-size:15px;white-space:nowrap;box-shadow:0 8px 28px rgba(31,29,34,.22)}
+.float b{font-family:"PT Mono",monospace;font-size:18px;font-variant-numeric:tabular-nums;background:var(--violet);border-radius:8px;padding:2px 8px}
+.float-go{display:inline-flex;align-items:center;gap:6px;background:var(--violet-2);border-radius:999px;padding:8px 14px}
+.float:hover{background:var(--btn-hover)}
+.al.has-float footer{padding-bottom:96px}
+@media(max-width:380px){.float-t{display:none}}
+@media(prefers-reduced-motion:reduce){.float{transition:none}}

@@ -37,6 +37,26 @@ export default function init(root, host) {
   tabs.forEach((t) => t.addEventListener('click', () => setPlan(t.dataset.planTab)));
   setPlan('year');
 
+  // Плавающий таймер: показываем, пока скидка действует и блок предложения не на экране.
+  const float = $('[data-float]');
+  const offerEl = $('#offer');
+  const shell = $('.al');
+  let offerInView = true;
+  const updateFloat = () => {
+    if (!float) return;
+    const show = host.dataset.offerState === 'active' && !offerInView;
+    float.hidden = !show;
+    if (shell) shell.classList.toggle('has-float', host.dataset.offerState === 'active');
+  };
+  if (float && offerEl && 'IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      offerInView = entries[0].isIntersecting;
+      updateFloat();
+    }, { threshold: 0.15 }).observe(offerEl);
+  } else {
+    offerInView = false;
+  }
+
   // Таймер предложения.
   const status = $('[data-offer-status]');
   const countdowns = $$('[data-offer-countdown]');
@@ -80,6 +100,7 @@ export default function init(root, host) {
         : state === 'initializing' ? 'Проверяем срок предложения…' : '';
     if (status && status.textContent !== msg) status.textContent = msg;
     if (status) status.hidden = !msg;
+    updateFloat();
   };
   const failClosed = () => {
     unavailable = true;
