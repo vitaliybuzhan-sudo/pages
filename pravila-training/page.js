@@ -38,7 +38,7 @@ export default function init(root, host) {
   if (more && scenes) more.addEventListener('click', () => scenes.setAttribute('data-scenes', 'expanded'));
 
   // Countdown to sales opening.
-  const deadline = new Date(host.dataset.deadline || '2026-10-21T12:00:00+03:00').getTime();
+  const deadline = new Date(host.dataset.deadline || '2026-10-20T12:00:00+03:00').getTime();
   const cd = { d: $('[data-cd="d"]'), h: $('[data-cd="h"]'), m: $('[data-cd="m"]'), s: $('[data-cd="s"]') };
   const p = (n) => String(n).padStart(2, '0');
   const tick = () => {
