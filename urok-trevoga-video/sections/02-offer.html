@@ -1,0 +1,101 @@
+<!-- 02 Предложение: тарифы, цены и таймер как на оффере тревоги -->
+<section class="offer" id="offer">
+  <div class="wrap">
+    <div class="offer-head">
+      <h2>Полный видеогайд по тревоге</h2>
+      <p class="lead">Весь курс и все материалы — на год или навсегда.</p>
+    </div>
+
+    <div class="timer" aria-live="polite">
+      <p class="timer-live" data-ui-when="active" hidden>Скидка действует <strong data-offer-countdown>—</strong></p>
+      <p class="timer-status" data-integration-status>Проверяем срок предложения…</p>
+    </div>
+    <p class="timer-note" data-ui-when="active" hidden>Скидка действует ограниченное время. После истечения таймера полная стоимость ≈ $210.</p>
+
+    <!-- Пока таймер идет: переключатель и две карточки -->
+    <div data-ui-when="active" hidden>
+      <div class="switch" role="group" aria-label="Срок доступа">
+        <button type="button" data-plan-btn="year" aria-pressed="true">12 месяцев · ≈ $29</button>
+        <button type="button" data-plan-btn="forever" aria-pressed="false">Бессрочно · ≈ $99</button>
+      </div>
+
+      <article class="plan" data-plan="year">
+        <div>
+          <p class="plan-kicker">Для первого прохождения и практики</p>
+          <h3 class="plan-t">Полный курс на год</h3>
+          <p class="plan-d">Пройдите гайд, попробуйте методы и возвращайтесь к материалам в течение 12 месяцев.</p>
+          <p class="price-old">Полная цена курса <s>≈ $210</s><span class="off">−86%</span></p>
+          <p class="price">≈ $29<small>USD</small></p>
+          <p class="pay">К оплате: 12&nbsp;900&nbsp;₸ · ≈ 2&nbsp;430&nbsp;₽<br>Разовый платеж · без подписки</p>
+        </div>
+        <div>
+          <ul class="incl">
+          <li><div>Полный видеогайд<span>45 видеоуроков · 10 ч 48 мин</span></div></li>
+          <li><div>7 тестов для проверки знаний<span>после каждого учебного модуля</span></div></li>
+          <li><div>Чек-листы<span>ключевые пункты под рукой</span></div></li>
+          <li><div>Списки литературы<span>для более глубокого изучения тем</span></div></li>
+        </ul>
+          <div class="plan-buy">
+            <!-- LINK: https://vitaliybuzhan.ru/anxiety-mvp-checkout-year (как на оффере) -->
+            <a class="cta" href="#" data-checkout-plan="year" aria-disabled="true"><span>Выбрать 12 месяцев за ≈ $29</span><span class="arr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+            <p class="cta-note">14 дней на возврат с момента покупки. По запросу, без объяснения причины.</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="plan" data-plan="forever" hidden>
+        <div>
+          <p class="plan-kicker">Чтобы возвращаться позже</p>
+          <h3 class="plan-t">Бессрочный доступ</h3>
+          <p class="plan-d">Возвращайтесь к купленной версии гайда и после первого года.</p>
+          <p class="price-old">Полная цена курса <s>≈ $210</s><span class="off">−53%</span></p>
+          <p class="price">≈ $99<small>USD</small></p>
+          <p class="pay">К оплате: 44&nbsp;900&nbsp;₸ · ≈ 8&nbsp;460&nbsp;₽<br>Разовый платеж · без подписки</p>
+        </div>
+        <div>
+          <ul class="incl">
+          <li><div>Полный видеогайд<span>45 видеоуроков · 10 ч 48 мин</span></div></li>
+          <li><div>7 тестов для проверки знаний<span>после каждого учебного модуля</span></div></li>
+          <li><div>Чек-листы<span>ключевые пункты под рукой</span></div></li>
+          <li><div>Списки литературы<span>для более глубокого изучения тем</span></div></li>
+        </ul>
+          <div class="plan-buy">
+            <!-- LINK: https://vitaliybuzhan.ru/anxiety-mvp-checkout-forever (как на оффере) -->
+            <a class="cta" href="#" data-checkout-plan="forever" aria-disabled="true"><span>Выбрать бессрочно за ≈ $99</span><span class="arr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+            <p class="cta-note">14 дней на возврат с момента покупки. По запросу, без объяснения причины.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- После таймера или при сбое: полная цена вместо двух карточек -->
+    <article class="plan" data-ui-when="expired" hidden>
+      <div>
+        <p class="plan-kicker">Без ограничения срока</p>
+        <h3 class="plan-t">Бессрочный доступ</h3>
+        <p class="plan-d">Возвращайтесь к купленной версии гайда в своем темпе.</p>
+        <p class="price-old">Полная цена курса</p>
+        <p class="price">≈ $210<small>USD</small></p>
+        <p class="pay">К оплате: 94&nbsp;900&nbsp;₸ · ≈ 17&nbsp;870&nbsp;₽<br>Разовый платеж · без подписки</p>
+      </div>
+      <div>
+        <ul class="incl">
+          <li><div>Полный видеогайд<span>45 видеоуроков · 10 ч 48 мин</span></div></li>
+          <li><div>7 тестов для проверки знаний<span>после каждого учебного модуля</span></div></li>
+          <li><div>Чек-листы<span>ключевые пункты под рукой</span></div></li>
+          <li><div>Списки литературы<span>для более глубокого изучения тем</span></div></li>
+        </ul>
+        <div class="plan-buy">
+          <!-- LINK: https://vitaliybuzhan.ru/anxiety-mvp-checkout-full (как на оффере) -->
+          <a class="cta" href="#" data-checkout-plan="full" aria-disabled="true"><span>Выбрать бессрочно за ≈ $210</span><span class="arr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+          <p class="cta-note">14 дней на возврат с момента покупки. По запросу, без объяснения причины.</p>
+        </div>
+      </div>
+    </article>
+
+    <div class="fine">
+      <p>Оплата проходит в тенге (KZT). Суммы в USD и RUB указаны для ориентира; итог в валюте вашей карты зависит от курса и условий банка.</p>
+      <p>Бессрочный доступ относится только к купленной версии гайда. Будущие обновления и отдельные продукты не включены.</p>
+    </div>
+  </div>
+</section>

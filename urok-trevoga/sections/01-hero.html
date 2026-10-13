@@ -1,0 +1,30 @@
+<!-- 01 Первый экран: подписка в два шага -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-main">
+      <p class="meta"><span>Бесплатный урок</span></p>
+      <h1>Когда тревожность становится большой проблемой?</h1>
+      <p class="lead">Видео на 16 минут. Смотреть можно прямо в браузере, на телефоне или компьютере.</p>
+
+      <div class="optin">
+        <!-- Шаг 1 -->
+        <div data-step="1">
+          <button type="button" class="cta" data-open-step2><span>Получить урок</span><span class="arr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+        </div>
+
+        <!-- Шаг 2: появляется вместо кнопки, без перехода -->
+        <!-- LINK: форма/лид XL — сохранить почту, источник anxiety_mvp_web, utm со страницы; после успеха открыть страницу урока urok-trevoga-video -->
+        <form data-step="2" hidden novalidate>
+          <p class="optin-q">Куда открыть доступ?</p>
+          <div class="field">
+            <label for="ut-email">Ваша почта</label>
+            <input id="ut-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@mail.com" aria-describedby="ut-email-err">
+            <p class="err" id="ut-email-err" role="alert"></p>
+          </div>
+          <button type="submit" class="cta"><span>Открыть урок</span><span class="arr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+          <p class="consent">Нажимая «Открыть урок», вы соглашаетесь получать на эту почту урок и письма о полном гайде. Отписаться можно в любой момент.<br><a href="#">Обработка данных</a><!-- LINK: тот же документ об обработке данных, что в боте --></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
