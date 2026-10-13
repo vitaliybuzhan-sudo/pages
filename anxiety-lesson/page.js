@@ -45,6 +45,8 @@ export default function init(root, host) {
   open.addEventListener('click', () => {
     open.hidden = true;
     form.hidden = false;
+    // Шаг 2 — на том же экране, без лишнего текста: прячем описание и карточку урока.
+    root.querySelectorAll('[data-optin-hide]').forEach((el) => { el.hidden = true; });
     input.focus();
   });
 
