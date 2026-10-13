@@ -153,7 +153,7 @@ h1{font-family:var(--display);font-weight:800;font-size:clamp(26px,5vw,36px);let
 /* ===== ДАННЫЕ РАСПИСАНИЯ — правится только этот блок =====
    kind: meet — встречи, group — практика и мини-группы, mat — материалы, курс, опросы
    date: "ГГГГ-ММ-ДД", end — для событий на несколько дней, time — время по Алматы */
-const MONTHS = [
+let MONTHS = [
   { key:"2026-09", name:"Сентябрь", state:"done",
     lead:"Первый месяц экспериментов. Запускаем гипотезу, сформулированную на воркшопе 29 августа, и проходим первый круг до контрольной точки.",
     events:[
@@ -231,7 +231,7 @@ const pad = n => String(n).padStart(2,"0");
 const iso = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
 const parse = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y,m-1,d); };
 const addDays = (s,n) => { const d = parse(s); d.setDate(d.getDate()+n); return iso(d); };
-const ALL = MONTHS.flatMap(m => m.events);
+let ALL = MONTHS.flatMap(m => m.events);
 const last = e => e.end || e.date;
 const isPast = e => last(e) < TODAY;
 const isToday = e => e.date <= TODAY && last(e) >= TODAY;
@@ -341,6 +341,13 @@ el("tabs").addEventListener("keydown", e => {
 });
 
 renderNext(); renderTabs(); renderMonth();
+/* свежие даты: data.json грузится без кэша, правки видны сразу */
+fetch("data.json?t=" + Date.now(), {cache:"no-store"}).then(r => r.ok ? r.json() : null).then(d => {
+  if(!Array.isArray(d) || !d.length) return;
+  MONTHS = d; ALL = MONTHS.flatMap(m => m.events);
+  if(!MONTHS.some(m => m.key === sel)) sel = MONTHS[0].key;
+  renderNext(); renderTabs(); renderMonth();
+}).catch(() => {});
 </script>
 </body>
 </html>
