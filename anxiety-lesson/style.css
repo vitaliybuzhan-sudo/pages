@@ -1,0 +1,79 @@
+/* Бесплатный урок о тревоге (ветка B воронки тревоги). Палитра и шрифты — как pravila-training / webinar-trevoga. */
+:host,.al{
+  --bg:#FBFAF7;
+  --ink:#1F1D22;
+  --muted:#5B5862;
+  --faint:#6F6C75;
+  --line:#E8E5DF;
+  --lav-bg:#F4F1FA;
+  --lav-card:#EEEAF8;
+  --violet:#6A5AA8;
+  --violet-2:#8C7BC4;
+  --btn:#25232A;
+  --btn-hover:#3A3740;
+  --card:#FFFFFF;
+  --err:#B3261E;
+  --pad-x:clamp(20px,5vw,32px);
+}
+*{box-sizing:border-box}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+[hidden]{display:none!important}
+.al{background:var(--bg);color:var(--ink);font-family:"Golos Text",system-ui,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;display:flex;flex-direction:column}
+.wrap{max-width:1080px;margin:0 auto}
+
+/* Шапка */
+.hdr{border-bottom:1px solid var(--line)}
+.hdr .wrap{padding:0 var(--pad-x);height:60px;display:flex;align-items:center}
+.brand{font-family:Onest,sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase}
+
+/* Первый экран */
+.hero{flex:1 0 auto;padding:clamp(40px,8vw,104px) var(--pad-x) clamp(56px,8vw,104px)}
+.hero .wrap{display:flex;flex-wrap:wrap;gap:clamp(32px,5vw,72px);align-items:center}
+.hero-main{flex:1 1 520px;min-width:0}
+.kicker{font-family:"PT Mono",monospace;font-size:14px;letter-spacing:.04em;color:var(--violet)}
+h1{font-family:Onest,sans-serif;font-weight:700;font-size:clamp(38px,4.8vw,64px);letter-spacing:-.035em;line-height:1.02;text-wrap:balance;margin-top:14px;max-width:20ch}
+.lead{color:var(--muted);font-size:clamp(17px,1.5vw,19px);max-width:46ch;margin-top:20px;text-wrap:pretty}
+
+/* Кнопка-пилюля */
+.cta{display:inline-flex;align-items:center;justify-content:space-between;gap:20px;background:var(--btn);color:#fff;border:0;cursor:pointer;text-decoration:none;font:inherit;font-family:Onest,sans-serif;font-weight:700;font-size:17px;padding:6px 6px 6px 26px;min-height:60px;border-radius:999px;transition:background .2s,transform .2s}
+.cta:hover{background:var(--btn-hover);transform:translateY(-2px)}
+.cta .arr{display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--violet-2);flex:0 0 auto;transition:transform .2s}
+.cta:hover .arr{transform:translate(3px,0)}
+.cta[disabled]{opacity:.6;cursor:progress;transform:none}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--violet-2);outline-offset:3px}
+
+/* Подписка в два шага */
+.optin{margin-top:34px;max-width:480px}
+.step2{display:flex;flex-direction:column;gap:12px}
+.step2 label{font-family:Onest,sans-serif;font-weight:600;font-size:20px;letter-spacing:-.01em}
+.field{width:100%;min-height:58px;border:1.5px solid #CFCBD6;border-radius:16px;background:#fff;padding:0 18px;font:inherit;font-size:17px;color:var(--ink)}
+.field:focus{border-color:var(--violet);outline:none;box-shadow:0 0 0 3px rgba(106,90,168,.15)}
+.field[aria-invalid="true"]{border-color:var(--err)}
+.err{font-size:14px;color:var(--err);min-height:0}
+.step2 .cta{width:100%}
+.consent{font-size:13px;line-height:1.5;color:var(--faint)}
+.consent a{color:var(--faint)}
+
+/* Карточка об уроке */
+.about{flex:0 1 360px;background:var(--lav-card);border-radius:24px;padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;gap:18px}
+.about .about-dur{font-family:Literata,Georgia,serif;font-style:italic;font-weight:500;font-size:clamp(40px,4.4vw,54px);line-height:1;letter-spacing:-.03em;color:var(--violet)}
+.about-dur span{font-size:.45em;font-style:normal;font-family:"PT Mono",monospace;letter-spacing:0;color:var(--muted);margin-left:6px}
+.about p{font-size:16px;line-height:1.5}
+.author{display:flex;align-items:center;gap:12px;border-top:1px solid #D9D1EE;padding-top:16px}
+.ava{flex:none;width:48px;height:48px;border-radius:50%;background:#0b0c11 url(https://vitaliybuzhan.ru/author-source.png) 63% 18%/auto 260% no-repeat}
+.author b{display:block;font-family:Onest,sans-serif;font-size:15px}
+.author span{font-size:14px;color:var(--muted);line-height:1.35}
+
+footer{padding:28px var(--pad-x);font-size:13px;line-height:1.5;color:var(--faint);border-top:1px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px}
+footer p{max-width:560px}
+
+@media(max-width:600px){
+  .hero{padding-top:32px;padding-bottom:48px}
+  h1{font-size:clamp(34px,10vw,44px)}
+  .optin{margin-top:26px}
+  .cta{width:100%}
+  .about{flex:1 1 100%}
+}
+@media(prefers-reduced-motion:reduce){.cta,.cta .arr{transition:none}}

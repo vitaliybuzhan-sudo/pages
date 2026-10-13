@@ -1,0 +1,33 @@
+<!-- Первый экран: подписка в два шага -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-main">
+      <p class="kicker">Бесплатный урок</p>
+      <h1>Когда тревожность становится большой проблемой?</h1>
+      <p class="lead">Видео на 16 минут. Смотреть можно прямо в браузере, на телефоне или компьютере.</p>
+
+      <div class="optin">
+        <!-- Шаг 1 -->
+        <button class="cta" type="button" data-optin-open><span>Получить урок</span><span class="arr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+
+        <!-- Шаг 2: появляется вместо кнопки, на этом же экране -->
+        <!-- LINK: Интегратор — сохранить почту в базу XL (метка anxiety_mvp_web, utm из адреса), затем открыть страницу урока anxiety-lesson-watch. Точка подключения — saveLead() в page.js -->
+        <form class="step2" data-optin-form novalidate hidden>
+          <label for="al-email">Куда открыть доступ?</label>
+          <input class="field" id="al-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Ваша почта" required aria-describedby="al-err">
+          <p class="err" id="al-err" role="alert" data-optin-err hidden>Проверьте адрес почты.</p>
+          <button class="cta" type="submit"><span>Открыть урок</span><span class="arr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></button>
+          <p class="consent">Нажимая «Открыть урок», вы соглашаетесь получать на эту почту урок и письма о полном гайде. Отписаться можно в любой момент.
+            <!-- LINK: тот же документ об обработке данных, что в боте -->
+            <a href="#" target="_blank" rel="noopener">Обработка данных</a>.</p>
+        </form>
+      </div>
+    </div>
+
+    <aside class="about" aria-label="Об уроке">
+      <p class="about-dur">16:46<span>видео</span></p>
+      <p>Урок из «Полного видеогайда по тревоге». В нем — где проходит граница между обычной тревогой и той, которая уже мешает жить.</p>
+      <div class="author"><span class="ava" aria-hidden="true"></span><div><b>Виталий Бужан</b><span>Психолог. Основатель проекта Self.Guide.</span></div></div>
+    </aside>
+  </div>
+</section>
