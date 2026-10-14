@@ -1,0 +1,19 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//vitaliybuzhan//webinar//RU
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:webinar-2010-svoboda-ot-trevogi@vitaliybuzhan.ru
+DTSTAMP:20261014T090000Z
+DTSTART:20261020T160000Z
+DTEND:20261020T173000Z
+SUMMARY:Вебинар «Свобода от тревоги» · Виталий Бужан
+DESCRIPTION:Ссылка на Зум придет на почту и в Telegram\, если подключили напоминания.
+BEGIN:VALARM
+TRIGGER:-PT1H
+ACTION:DISPLAY
+DESCRIPTION:Через час вебинар «Свобода от тревоги»
+END:VALARM
+END:VEVENT
+END:VCALENDAR
