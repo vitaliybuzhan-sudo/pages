@@ -1,1 +1,4 @@
 /* ручные правки верстки */
+
+.photo-img{flex:0 0 260px;width:260px;height:auto;aspect-ratio:3/4;object-fit:cover;border-radius:24px;display:block}
+@media(max-width:600px){.photo-img{width:100%;max-width:320px;flex:1 1 100%}}

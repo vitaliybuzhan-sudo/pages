@@ -1,0 +1,43 @@
+/* Общие блоки страниц вебинара: «Спасибо», условия, запись. Основа — ../webinar-trevoga/style.css */
+.pg-hero{padding:clamp(40px,6vw,80px) var(--pad-x) clamp(40px,6vw,72px)}
+.pg-hero .wrap{max-width:860px}
+.pg-hero h1{font-size:clamp(40px,5.6vw,76px)}
+.pg-hero .lead{color:var(--ink);margin-top:20px}
+.pg-sec{padding:clamp(48px,7vw,96px) var(--pad-x)}
+.pg-sec.lav{background:var(--lav-bg)}
+.pg-sec .wrap{max-width:860px}
+.pg-sec h2{font-size:clamp(28px,3.2vw,40px)}
+.pg-sec .body{margin-top:16px;max-width:62ch}
+.pg-note{font-size:14px;color:var(--faint);margin-top:12px}
+.timer{display:inline-flex;align-items:baseline;gap:12px;flex-wrap:wrap;background:var(--lav-card);border-radius:18px;padding:14px 20px;margin-top:26px}
+.timer span{font-family:"PT Mono",monospace;font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.timer b{font-family:Onest,sans-serif;font-weight:700;font-size:clamp(24px,3vw,32px);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;margin-top:32px}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:clamp(24px,3vw,32px);display:flex;flex-direction:column;gap:14px}
+.plan.lab{background:var(--lav-card);border-color:transparent}
+.plan-t{font-family:Onest,sans-serif;font-weight:700;font-size:clamp(22px,2.2vw,26px);letter-spacing:-.02em;line-height:1.2}
+.plan-d{color:var(--muted);font-size:15.5px;line-height:1.5}
+.plan ul{display:grid;gap:7px;font-size:15.5px;line-height:1.45}
+.plan li{padding-left:20px;position:relative}
+.plan li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--violet-2)}
+.price{margin-top:auto;padding-top:8px;display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px}
+.price s{color:var(--faint);font-size:17px}
+.price b{font-family:Onest,sans-serif;font-weight:800;font-size:clamp(28px,3vw,34px);letter-spacing:-.025em}
+.price small{font-family:"PT Mono",monospace;font-size:13px;color:var(--muted)}
+.dates{font-family:"PT Mono",monospace;font-size:13px;color:var(--muted)}
+.plan .cta{margin-top:6px;width:100%;justify-content:space-between}
+.faq{display:grid;margin-top:24px;border-top:1px solid var(--line)}
+.faq div{padding:18px 0;border-bottom:1px solid var(--line)}
+.faq b{font-family:Onest,sans-serif;font-weight:600;font-size:18px}
+.faq p{color:var(--muted);margin-top:4px}
+.links2{display:flex;flex-wrap:wrap;gap:10px 22px;margin-top:20px}
+.links2 a{color:var(--violet);font-weight:600;text-decoration:none;border-bottom:1.5px solid var(--violet-2)}
+.video{margin-top:28px;aspect-ratio:16/9;border-radius:24px;background:var(--btn);display:grid;place-items:center;color:#C9C5D0;font-family:"PT Mono",monospace;font-size:14px;text-align:center;padding:20px}
+.video i{display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:var(--violet-2);margin:0 auto 14px;font-style:normal;color:#fff;font-size:26px}
+.checks{display:grid;gap:10px;margin-top:20px}
+.checks li{padding-left:28px;position:relative}
+.checks li::before{content:"✓";position:absolute;left:0;color:var(--violet);font-weight:700}
+.closed{display:none}
+.wb.is-over .open-only{display:none}
+.wb.is-over .closed{display:block}
+@media(max-width:600px){.pg-hero h1{font-size:clamp(34px,10vw,44px)}.plan .cta{display:flex}}
