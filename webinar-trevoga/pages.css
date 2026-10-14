@@ -44,3 +44,19 @@
 .plans.one{grid-template-columns:1fr}
 .lab-main{border:2px solid var(--violet-2)}
 .plans-sub{font-family:Onest,sans-serif;font-weight:700;font-size:clamp(20px,2.2vw,24px);margin-top:40px}
+/* Сравнение тренинг / Лаборатория */
+.cmp{margin-top:28px;background:var(--card);border-radius:20px;overflow:hidden;border:1px solid var(--line)}
+.cmp-r{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:10px;padding:13px clamp(14px,2.4vw,22px);border-top:1px solid var(--line);font-size:15.5px;line-height:1.4;align-items:center}
+.cmp-r:first-child{border-top:0}
+.cmp-r span:nth-child(n+2){text-align:center}
+.cmp-r span:nth-child(3){color:var(--violet)}
+.cmp-h{font-family:Onest,sans-serif;font-weight:700;font-size:16px;background:var(--lav-card)}
+.cmp-h span:nth-child(3){color:var(--ink)}
+.cmp-p small{display:block;font-family:"PT Mono",monospace;font-size:12px;color:var(--muted);margin-top:2px}
+.tariffs{display:grid;gap:8px;margin-top:auto}
+.tariffs div{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:10px 0;border-top:1px solid var(--line)}
+.tariffs span{flex:1 1 100%;font-size:15px;color:var(--muted)}
+.tariffs s{color:var(--faint)}
+.tariffs b{font-family:Onest,sans-serif;font-weight:800;font-size:24px;letter-spacing:-.02em}
+.plan .more{color:var(--violet);font-weight:600;text-decoration:none;font-size:15.5px;text-align:center}
+@media(max-width:600px){.cmp-r{font-size:14px;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) minmax(0,1fr)}}
