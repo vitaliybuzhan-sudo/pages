@@ -2,7 +2,7 @@
 // Ранний доступ для участников вебинара: ?ea=webinar — покупка открыта сразу, до общего набора 21 октября.
 const OPEN = Date.UTC(2026, 9, 21, 9, 0, 0);    // 21.10, 12:00 МСК
 const CLOSE = Date.UTC(2026, 9, 24, 21, 0, 0);  // 24.10, 24:00 МСК
-const CHECKOUT = '#pay-lab';   // Интегратор: ссылка оплаты «Лаборатория — год» в Prodamus XL
+const CHECKOUT = 'https://vitaliybuzhan.ru/laboratoriya-oplata';   // оплата «Лаборатория — год» в Prodamus XL (страница DUk3ZSX8ZE2OmVLLdpY9xA, продукт gMMyOtQIC0yMdpsKWC1zFg); откроется после публикации
 const REMIND = '#remind';      // Интегратор: подписка на напоминание 21.10
 export default function (root) {
   const q = new URLSearchParams(location.search);
