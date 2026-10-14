@@ -10,7 +10,7 @@ def build(name):
     shell=open(base+'page.html').read()
     def inc(m):
         p=os.path.normpath(base+m.group(1));t=open(p).read()
-        if p.endswith('.css'):return '<style>'+t+'</style>'
+        if p.endswith('.css'):return '<style>'+re.sub(r':host\b','body',t)+'</style>'  # вне shadow root :host = body
         d=base
         def img(mm):
             src=mm.group(2)

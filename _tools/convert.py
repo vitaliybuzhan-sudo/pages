@@ -62,7 +62,8 @@ const { chromium } = require('playwright'); const fs=require('fs');
  const errs=[]; p.on('pageerror',e=>errs.push(e.message));
  await p.goto('http://127.0.0.1:%d/local.html',{waitUntil:'networkidle'}); await p.waitForTimeout(2000);
  const r=await p.evaluate(()=>{
-   const w=document.querySelector('#dc-root > .sc-host > div') || document.querySelector('#dc-root');
+   const host=document.querySelector('#dc-root > .sc-host');
+   const w=(host && host.children.length===1 && host.firstElementChild.tagName==='DIV') ? host.firstElementChild : (host || document.querySelector('#dc-root'));
    const styles=[...document.querySelectorAll('style')].map(s=>({attrs:[...s.attributes].map(a=>a.name).join(' '),css:s.textContent,
       rules:(()=>{try{return [...s.sheet.cssRules].map(x=>x.cssText).join('\n')}catch(e){return ''}})()}));
    return {wrapStyle:w.getAttribute('style')||'', parts:[...w.children].map(c=>({html:c.outerHTML,label:c.getAttribute('data-screen-label')||c.tagName.toLowerCase(),id:c.id})), styles};

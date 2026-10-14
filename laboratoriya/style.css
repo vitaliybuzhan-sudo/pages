@@ -1,0 +1,286 @@
+/* Page rules */
+@layer page{
+:host{all:initial;display:block;text-align:left;margin:0;background:#FBFAF7;color:#25232A;font-family:'Golos Text',system-ui,sans-serif;font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:#6A5AA8}a:hover{color:#25232A}
+summary{list-style:none}summary::-webkit-details-marker{display:none}
+details summary [data-plus]::before{content:'+'}
+details[open] summary [data-plus]::before{content:'–'}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+@media (min-width:641px){[data-sticky]{display:none!important}}
+.scp0:hover { background: rgb(37, 35, 42) !important; color: rgb(255, 255, 255) !important; }
+.scp1:hover { background: rgb(58, 55, 64) !important; color: rgb(255, 255, 255) !important; transform: translateY(-2px) !important; }
+.scp2:hover { color: rgb(37, 35, 42) !important; }
+.scp3:hover { color: rgb(255, 255, 255) !important; }
+.scp4:hover { background: rgb(244, 241, 250) !important; }
+}
+
+/* Element styles (former inline styles) */
+.s1{position: sticky; top: 0px; z-index: 40; background: rgba(251, 250, 247, 0.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgb(232, 229, 223)}
+.s2{max-width: 1120px; margin: 0px auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px}
+.s3{font-family: Literata, Georgia, serif; font-weight: 500; font-size: 20px; letter-spacing: -0.01em}
+.s4{display: flex; align-items: center; gap: 18px}
+.s5{border: 1.5px solid rgb(37, 35, 42); color: rgb(31, 29, 34); font-family: Onest, sans-serif; font-weight: 700; font-size: 14px; padding: 0px 16px; min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; text-decoration: none; white-space: nowrap; transition: background 0.2s, color 0.2s}
+.s6{padding: clamp(56px, 9vw, 112px) 24px clamp(48px, 8vw, 96px)}
+.s7{max-width: 1120px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: 40px 48px; align-items: flex-start}
+.s8{flex: 1 1 440px; min-width: 0px}
+.s9{display: flex; align-items: center; gap: 12px; margin-bottom: 28px}
+.s10{font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(106, 90, 168)}
+.s11{background: rgb(106, 90, 168); color: rgb(255, 255, 255); font-family: Onest, sans-serif; font-weight: 700; font-size: 14px; padding: 6px 12px; border-radius: 999px; white-space: nowrap}
+.s12{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(36px, 5.2vw, 64px); line-height: 1.04; letter-spacing: -0.035em; margin: 0px 0px 24px; max-width: 780px; text-wrap: balance}
+.s13{color: rgb(106, 90, 168)}
+.s14{font-size: clamp(17px, 1.8vw, 19px); line-height: 1.55; color: rgb(69, 65, 77); max-width: 580px; margin: 0px 0px 36px; text-wrap: pretty}
+.s15{display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px}
+.s16{display: inline-flex; align-items: center; gap: 20px; background: rgb(37, 35, 42); color: rgb(255, 255, 255); font-family: Onest, sans-serif; font-weight: 700; font-size: 17px; padding: 6px 6px 6px 26px; min-height: 60px; border-radius: 999px; text-decoration: none; transition: background 0.2s, transform 0.2s}
+.s17{font-weight: inherit}
+.s18{display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border-radius: 50%; background: rgb(140, 123, 196); color: rgb(255, 255, 255); font-size: 20px; flex: 0 0 auto}
+.s19{font-size: 15px; color: rgb(91, 88, 98); max-width: 360px; line-height: 1.5}
+.s20{flex: 0 1 300px; max-width: 320px; min-width: 0px; position: relative; margin: 0px auto}
+.s21{display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: 28px}
+.s22{position: absolute; left: 16px; top: 16px; display: flex; align-items: center; gap: 10px; background: rgb(255, 255, 255); color: rgb(37, 35, 42); border-radius: 999px; padding: 10px 16px; font-size: 15px; box-shadow: rgba(37, 35, 42, 0.12) 0px 6px 20px}
+.s23{width: 8px; height: 8px; border-radius: 50%; background: rgb(106, 90, 168); flex: 0 0 auto}
+.s24{font-weight: 600}
+.s25{margin-top: 14px}
+.s26{font-size: 14px; color: rgb(91, 88, 98); margin-bottom: 8px}
+.s27{display: grid; grid-template-columns: repeat(4, minmax(0px, 1fr)); gap: 8px}
+.s28{position: relative; aspect-ratio: 1 / 1; min-width: 0px}
+.s29{max-width: 1120px; margin: clamp(48px, 7vw, 80px) auto 0px; display: grid; gap: 40px}
+.s30{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap: 0px; border-top: 1px solid rgb(232, 229, 223); border-bottom: 1px solid rgb(232, 229, 223)}
+.s31{padding: 22px 20px 22px 0px}
+.s32{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(36px, 4.2vw, 48px); line-height: 1; letter-spacing: -0.035em; color: rgb(106, 90, 168)}
+.s33{font-size: 15px; line-height: 1.4; color: rgb(69, 65, 77); margin-top: 10px; max-width: 220px}
+.s34{padding: 22px 20px; border-left: 1px solid rgb(232, 229, 223)}
+.s35{padding: clamp(64px, 10vw, 120px) 24px; background: rgb(255, 255, 255)}
+.s36{max-width: 1120px; margin: 0px auto}
+.s37{font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(106, 90, 168); margin-bottom: 14px}
+.s38{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(30px, 4.2vw, 52px); line-height: 1.06; letter-spacing: -0.025em; margin: 0px 0px 20px; max-width: 980px; text-wrap: pretty}
+.s39{font-style: italic; color: rgb(106, 90, 168)}
+.s40{margin: 0px 0px 40px; color: rgb(69, 65, 77); max-width: 640px; font-size: clamp(17px, 1.6vw, 19px); text-wrap: pretty}
+.s41{position: relative}
+.s42{position: absolute; z-index: 2; top: clamp(-56px, -5vw, -44px); right: clamp(-20px, -1.6vw, -10px); width: clamp(92px, 10vw, 116px); aspect-ratio: 1 / 1; transform: rotate(12deg); filter: drop-shadow(rgba(150, 104, 10, 0.28) 0px 6px 10px)}
+.s43{position: relative; width: 100%; height: 100%; clip-path: polygon(50% 0%, 55.68% 6.87%, 62.94% 1.7%, 66.65% 9.81%, 75% 6.7%, 76.48% 15.49%, 85.36% 14.64%, 84.51% 23.52%, 93.3% 25%, 90.19% 33.35%, 98.3% 37.06%, 93.13% 44.32%, 100% 50%, 93.13% 55.68%, 98.3% 62.94%, 90.19% 66.65%, 93.3% 75%, 84.51% 76.48%, 85.36% 85.36%, 76.48% 84.51%, 75% 93.3%, 66.65% 90.19%, 62.94% 98.3%, 55.68% 93.13%, 50% 100%, 44.32% 93.13%, 37.06% 98.3%, 33.35% 90.19%, 25% 93.3%, 23.52% 84.51%, 14.64% 85.36%, 15.49% 76.48%, 6.7% 75%, 9.81% 66.65%, 1.7% 62.94%, 6.87% 55.68%, 0% 50%, 6.87% 44.32%, 1.7% 37.06%, 9.81% 33.35%, 6.7% 25%, 15.49% 23.52%, 14.64% 14.64%, 23.52% 15.49%, 25% 6.7%, 33.35% 9.81%, 37.06% 1.7%, 44.32% 6.87%); background: rgb(237, 181, 46)}
+.s44{position: absolute; inset: 11%; border-radius: 50%; background: rgb(248, 207, 74); box-shadow: rgb(251, 224, 138) 0px 0px 0px 2px inset, rgb(201, 143, 23) 0px 0px 0px 3.5px inset; overflow: hidden; display: flex; align-items: center; justify-content: center}
+.s45{position: absolute; top: -30%; left: -45%; width: 28%; height: 160%; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0)); transform: skewX(-20deg); pointer-events: none}
+.s46{position: absolute; inset: 9%; border-radius: 50%; border-width: 3px; border-style: solid; border-color: rgba(255, 255, 255, 0.85) transparent transparent rgba(255, 255, 255, 0.85); border-image: initial; transform: rotate(-157.5deg); box-sizing: border-box; pointer-events: none}
+.s47{position: absolute; left: 1.5%; top: 19%; width: 9%; height: 9%; border-radius: 50%; background: rgb(255, 255, 255)}
+.s48{position: relative; font-family: Onest, sans-serif; font-weight: 800; font-size: clamp(11px, 1.15vw, 14px); line-height: 1; letter-spacing: -0.01em; white-space: nowrap; color: rgb(74, 52, 4)}
+.s49{background: rgb(255, 255, 255); border-radius: 20px; overflow: hidden; border: 1px solid rgb(232, 229, 223)}
+.s50{display: grid; grid-template-columns: minmax(0px, 1.5fr) minmax(0px, 1fr) minmax(0px, 1fr)}
+.s51{border-bottom: 1px solid rgb(232, 229, 223); border-top: 3px solid transparent; display: flex; align-items: flex-end; padding: 20px clamp(6px, 2vw, 20px)}
+.s52{padding: 34px clamp(6px, 2vw, 20px) 20px; border-bottom: 1px solid rgb(232, 229, 223); text-align: center; border-top: 3px solid transparent; border-left: 1px solid rgb(232, 229, 223)}
+.s53{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(12px, 3.4vw, 20px); line-height: 1.2; hyphens: auto; overflow-wrap: anywhere}
+.s54{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(20px, 3vw, 34px); letter-spacing: -0.02em; margin-top: 6px}
+.s55{font-size: 13px; color: rgb(91, 88, 98); margin-top: 2px}
+.s56{padding: 34px clamp(6px, 2vw, 20px) 20px; border-bottom: 1px solid rgb(232, 229, 223); text-align: center; background: rgb(106, 90, 168); color: rgb(255, 255, 255); border-top: 3px solid rgb(106, 90, 168)}
+.s57{font-size: 13px; color: rgb(238, 234, 248); margin-top: 2px}
+.s58{padding: 13px clamp(6px, 2vw, 20px); border-bottom: 1px solid rgb(232, 229, 223); display: flex; align-items: center; min-width: 0px; overflow-wrap: anywhere; font-size: clamp(13px, 1.5vw, 16px); line-height: 1.4}
+.s59{padding: 13px clamp(6px, 2vw, 20px); border-bottom: 1px solid rgb(232, 229, 223); display: flex; align-items: center; justify-content: center; border-left: 1px solid rgb(232, 229, 223)}
+.s60{display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; color: rgb(169, 164, 179); font-size: 18px}
+.s61{padding: 13px clamp(6px, 2vw, 20px); border-bottom: 1px solid rgb(232, 229, 223); display: flex; align-items: center; justify-content: center; background: rgb(255, 255, 255); border-left: 1px solid rgb(220, 211, 241)}
+.s62{font-weight: 600; font-size: clamp(13px, 1.5vw, 16px); line-height: 1.25; text-align: center; color: rgb(106, 90, 168)}
+.s63{display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: rgb(106, 90, 168); color: rgb(255, 255, 255); font-size: 15px; font-weight: 700; box-shadow: rgb(238, 234, 248) 0px 0px 0px 4px}
+.s64{display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: transparent; border: 1.5px solid rgb(169, 164, 179); box-sizing: border-box; color: rgb(91, 88, 98); font-size: 13px; font-weight: 700}
+.s65{padding: 13px clamp(6px, 2vw, 20px); display: flex; align-items: center}
+.s66{font-size: clamp(13px, 1.5vw, 16px); color: rgb(91, 88, 98)}
+.s67{padding: 13px clamp(6px, 2vw, 20px); display: flex; align-items: center; justify-content: center; font-size: clamp(13px, 1.4vw, 15px); color: rgb(91, 88, 98); border-left: 1px solid rgb(232, 229, 223)}
+.s68{padding: 13px clamp(6px, 2vw, 20px); display: flex; align-items: center; justify-content: center; background: rgb(255, 255, 255); border-left: 1px solid rgb(220, 211, 241); font-family: Onest, sans-serif; font-weight: 700; font-size: 20px; color: rgb(106, 90, 168)}
+.s69{display: inline-block; margin-top: 14px; font-size: 15px; font-weight: 600; color: rgb(106, 90, 168); text-decoration: none}
+.s70{margin-top: 40px}
+.s71{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(20px, 2.2vw, 24px); letter-spacing: -0.015em; margin-bottom: 16px}
+.s72{margin: 0px; max-width: 760px; display: grid; grid-template-columns: minmax(0px, clamp(84px, 14vw, 130px)) repeat(12, minmax(0px, 1fr)); gap: 6px 4px; align-items: center}
+.s73{font-size: 14px; color: rgb(91, 88, 98)}
+.s74{height: 14px; border-radius: 4px; background: rgb(169, 164, 179)}
+.s75{height: 14px; border-radius: 4px; background: rgb(241, 239, 234)}
+.s76{font-size: 14px; font-weight: 600; color: rgb(106, 90, 168)}
+.s77{height: 14px; border-radius: 4px; background: rgb(106, 90, 168)}
+.s78{font-size: 11px; color: rgb(91, 88, 98); text-align: center; font-family: "PT Mono", monospace}
+.s79{margin: 28px 0px 0px; display: grid; gap: 8px; max-width: 760px}
+.s80{margin: 0px; font-family: Literata, Georgia, serif; font-style: italic; font-size: 17px; line-height: 1.5; color: rgb(69, 65, 77); text-wrap: pretty}
+.s81{display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 36px}
+.s82{flex-basis: 100%; font-size: 14px; color: rgb(91, 88, 98)}
+.s83{font-weight: 600; color: rgb(37, 35, 42)}
+.s84{font-weight: 600; color: rgb(106, 90, 168); text-decoration: none}
+.s85{padding: clamp(64px, 10vw, 120px) 24px; background: rgb(244, 241, 250)}
+.s86{display: flex; flex-wrap: wrap; gap: 32px 72px; align-items: flex-start}
+.s87{flex: 1 1 260px; max-width: 340px}
+.s88{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(40px, 5.4vw, 64px); line-height: 1.02; letter-spacing: -0.03em; margin: 0px; text-wrap: balance}
+.s89{flex: 999 1 520px; min-width: 0px; display: grid; gap: 14px}
+.s90{margin: 0px clamp(0px, 6vw, 64px) 0px 0px; background: rgb(255, 255, 255); border-radius: 24px 24px 24px 6px; padding: clamp(18px, 2.4vw, 24px) clamp(20px, 2.8vw, 28px); box-shadow: rgb(220, 211, 241) 0px 1px 0px, rgba(106, 90, 168, 0.08) 0px 8px 24px; font-family: Literata, Georgia, serif; font-size: clamp(19px, 2vw, 23px); line-height: 1.45; letter-spacing: -0.005em; color: rgb(37, 35, 42); text-wrap: pretty}
+.s91{background: linear-gradient(transparent 58%, rgba(248, 207, 74, 0.75) 58%); color: inherit; padding: 0px 2px}
+.s92{margin: 0px 0px 0px clamp(0px, 6vw, 64px); background: rgb(255, 255, 255); border-radius: 24px 24px 6px; padding: clamp(18px, 2.4vw, 24px) clamp(20px, 2.8vw, 28px); box-shadow: rgb(220, 211, 241) 0px 1px 0px, rgba(106, 90, 168, 0.08) 0px 8px 24px; font-family: Literata, Georgia, serif; font-size: clamp(19px, 2vw, 23px); line-height: 1.45; letter-spacing: -0.005em; color: rgb(37, 35, 42); text-wrap: pretty}
+.s93{margin-top: 6px; font-size: 14px; color: rgb(91, 88, 98)}
+.s94{margin-top: clamp(28px, 4vw, 40px); display: flex; justify-content: flex-end}
+.s95{max-width: 640px; display: grid; gap: 8px; justify-items: end}
+.s96{margin: 0px; background: rgb(106, 90, 168); color: rgb(255, 255, 255); border-radius: 24px 24px 6px; padding: clamp(20px, 2.6vw, 26px) clamp(22px, 3vw, 30px); font-family: Onest, sans-serif; font-size: clamp(20px, 2.2vw, 25px); line-height: 1.35; letter-spacing: -0.01em; font-weight: 600; text-wrap: pretty; box-shadow: rgba(106, 90, 168, 0.22) 0px 8px 24px}
+.s97{color: rgb(255, 224, 138)}
+.s98{padding: clamp(64px, 10vw, 120px) 24px}
+.s99{max-width: 1120px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: 24px 72px}
+.s100{flex: 1 1 220px; max-width: 300px}
+.s101{font-size: 16px; color: rgb(91, 88, 98); margin: 0px; line-height: 1.55}
+.s102{flex: 999 1 560px; min-width: 0px}
+.s103{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(28px, 3.8vw, 44px); line-height: 1.12; letter-spacing: -0.015em; margin: 0px 0px 36px; max-width: 760px; text-wrap: balance}
+.s104{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 36px 0px}
+.s105{min-width: 0px}
+.s106{display: flex; align-items: center; margin-bottom: 18px}
+.s107{display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; background: rgb(106, 90, 168); color: rgb(255, 255, 255); flex: 0 0 auto; box-shadow: rgb(238, 234, 248) 0px 0px 0px 6px}
+.s108{flex: 1 1 0%; height: 2px; margin-left: 14px; background: rgb(220, 211, 241)}
+.s109{font-family: "PT Mono", monospace; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(106, 90, 168)}
+.s110{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(19px, 2vw, 22px); letter-spacing: -0.015em; line-height: 1.2; margin: 6px 0px 8px}
+.s111{font-size: 15px; line-height: 1.5; color: rgb(69, 65, 77); padding-right: 12px}
+.s112{flex: 1 1 0%; height: 2px; margin-left: 14px; background: repeating-linear-gradient(90deg, rgb(191, 178, 236) 0px, rgb(191, 178, 236) 6px, transparent 6px, transparent 12px)}
+.s113{color: rgb(106, 90, 168); display: flex; margin-left: 6px}
+.s114{margin-top: 20px; display: flex; justify-content: flex-end; align-items: center; gap: 8px; font-size: 15px; color: rgb(106, 90, 168); font-weight: 600}
+.s115{margin-top: clamp(56px, 8vw, 88px); padding-top: clamp(40px, 5vw, 56px); border-top: 1px solid rgb(232, 229, 223)}
+.s116{font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(106, 90, 168); margin-bottom: 10px}
+.s117{font-family: Onest, sans-serif; font-weight: 700; font-size: 22px; line-height: 1.3; letter-spacing: -0.015em; margin: 0px 0px 10px}
+.s118{margin: 0px 0px 24px; color: rgb(69, 65, 77); max-width: 640px; font-size: clamp(17px, 1.6vw, 19px)}
+.s119{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr)); gap: 32px 56px; align-items: start}
+.s120{display: flex; flex-direction: column}
+.s121{font-family: "PT Mono", monospace; font-size: 13px; color: rgb(106, 90, 168)}
+.s122{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(22px, 2.4vw, 28px); letter-spacing: -0.02em; margin: 8px 0px 6px}
+.s123{font-size: 15px; color: rgb(91, 88, 98)}
+.s124{list-style: none; margin: 18px 0px 0px; padding: 0px}
+.s125{display: grid; grid-template-columns: 22px 1fr; padding: 10px 0px; border-top: 1px solid rgb(232, 229, 223); font-size: 16px; line-height: 1.45}
+.s126{color: rgb(106, 90, 168); display: flex; padding-top: 3px}
+.s127{position: relative; display: flex; flex-direction: column}
+.s128{display: flex; align-items: center; flex-direction: row-reverse; justify-content: flex-end; gap: 10px}
+.s129{font-family: "PT Mono", monospace; font-size: 13px; color: rgb(154, 107, 0)}
+.s130{display: block; overflow: visible; filter: drop-shadow(rgba(245, 200, 66, 0.9) 0px 0px 6px) drop-shadow(rgba(245, 200, 66, 0.55) 0px 0px 14px)}
+.s131{display: grid; grid-template-columns: 22px 1fr; padding: 10px 0px; border-top: 1px solid rgb(240, 226, 182); font-size: 16px; line-height: 1.45}
+.s132{color: rgb(201, 143, 23); display: flex; padding-top: 3px}
+.s133{margin-top: clamp(40px, 5vw, 56px)}
+.s134{display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; margin-bottom: 52px}
+.s135{position: relative; display: grid; grid-template-columns: repeat(12, minmax(0px, 1fr)); gap: 2px; align-items: start}
+.s136{position: absolute; left: 4%; right: 4%; top: 19px; height: 3px; border-radius: 2px; background: linear-gradient(90deg, rgb(220, 211, 241) 0%, rgb(245, 200, 66) 21%, rgb(220, 211, 241) 32%, rgb(220, 211, 241) 62%, rgb(245, 200, 66) 71%, rgb(220, 211, 241) 82%)}
+.s137{position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 0px}
+.s138{position: absolute; bottom: calc(100% - 6px); left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 2px; pointer-events: none}
+.s139{white-space: nowrap; font-size: 11px; font-weight: 600; color: rgb(106, 90, 168)}
+.s140{display: block; filter: drop-shadow(rgba(106, 90, 168, 0.35) 0px 3px 4px)}
+.s141{height: 40px; display: flex; align-items: center}
+.s142{width: 14px; height: 14px; border-radius: 50%; background: rgb(106, 90, 168); box-shadow: rgb(255, 255, 255) 0px 0px 0px 4px, rgb(220, 211, 241) 0px 0px 0px 5px}
+.s143{font-size: 11px; color: rgb(91, 88, 98); font-weight: 400; font-family: "PT Mono", monospace}
+.s144{position: relative; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px}
+.s145{position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle, rgba(245, 200, 66, 0.45) 0%, rgba(245, 200, 66, 0) 68%)}
+.s146{font-size: 11px; color: rgb(154, 107, 0); font-weight: 700; font-family: "PT Mono", monospace}
+.s147{font-size: 10px; line-height: 1.2; color: rgb(154, 107, 0); text-align: center; font-weight: 600}
+.s148{max-width: 1120px; margin: 0px auto; display: flex; flex-wrap: wrap; gap: 40px 72px; align-items: flex-start}
+.s149{display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 20%; border-radius: 20px}
+.s150{flex: 999 1 520px; min-width: 0px}
+.s151{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(28px, 3.8vw, 44px); line-height: 1.12; letter-spacing: -0.015em; margin: 0px 0px 24px; text-wrap: balance}
+.s152{margin: 0px 0px 32px; color: rgb(69, 65, 77); max-width: 600px}
+.s153{list-style: none; margin: 0px; padding: 0px; border-top: 1px solid rgb(232, 229, 223); max-width: 600px}
+.s154{padding: 14px 0px; border-bottom: 1px solid rgb(232, 229, 223); font-size: 16px}
+.s155{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 16px; margin-top: 24px; max-width: 600px}
+.s156{margin: 0px; background: rgb(255, 255, 255); border: 1px solid rgb(232, 229, 223); border-radius: 20px; overflow: hidden; display: flex; flex-direction: column}
+.s157{position: relative; aspect-ratio: 4 / 3; border-bottom: 1px solid rgb(232, 229, 223); background: rgb(241, 241, 241)}
+.s158{padding: 16px 18px 18px; font-size: 15px; line-height: 1.45; color: rgb(69, 65, 77)}
+.s159{position: relative; aspect-ratio: 4 / 3; border-bottom: 1px solid rgb(232, 229, 223)}
+.s160{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(30px, 4.2vw, 50px); line-height: 1.1; letter-spacing: -0.02em; margin: 0px 0px 24px; text-wrap: balance}
+.s161{font-size: clamp(18px, 2vw, 20px); line-height: 1.6; color: rgb(69, 65, 77); max-width: 620px; margin: 0px 0px 40px}
+.s162{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: 24px 28px; padding: 32px 0px; border-top: 1px solid rgb(220, 211, 241); border-bottom: 1px solid rgb(220, 211, 241)}
+.s163{font-weight: 600; font-size: 18px; margin-bottom: 6px}
+.s164{font-size: 16px; color: rgb(69, 65, 77); line-height: 1.55}
+.s165{display: flex; flex-wrap: wrap; gap: 8px 28px; margin-bottom: 14px; font-size: 15px}
+.s166{display: inline-flex; align-items: center; gap: 10px; color: rgb(91, 88, 98)}
+.s167{width: 28px; height: 3px; border-radius: 2px; background: rgb(169, 164, 179)}
+.s168{display: inline-flex; align-items: center; gap: 10px; color: rgb(37, 35, 42); font-weight: 600}
+.s169{width: 28px; height: 4px; border-radius: 2px; background: rgb(106, 90, 168)}
+.s170{display: block; width: 100%; height: auto}
+.s171{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 24px 40px; margin-top: 40px}
+.s172{margin: 0px; font-family: Literata, Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.5}
+.s173{margin-top: 16px; font-size: 14px; color: rgb(91, 88, 98)}
+.s174{padding: clamp(64px, 10vw, 120px) 24px; background: rgb(37, 35, 42); color: rgb(251, 250, 247)}
+.s175{font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(191, 178, 236); margin-bottom: 20px}
+.s176{display: flex; flex-wrap: wrap; gap: 40px 72px; align-items: flex-start}
+.s177{flex: 1 1 300px; min-width: 0px}
+.s178{padding: 24px 0px; border-top: 1px solid rgb(69, 65, 77)}
+.s179{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(64px, 9vw, 104px); line-height: 0.9; letter-spacing: -0.04em; color: rgb(255, 255, 255)}
+.s180{font-size: 17px; line-height: 1.5; color: rgb(201, 197, 209); max-width: 360px; margin: 14px 0px 0px}
+.s181{margin: 0px; padding: 24px 0px; font-family: Literata, Georgia, serif; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: rgb(255, 255, 255); text-wrap: pretty}
+.s182{margin: 0px; padding: 24px 0px; border-top: 1px solid rgb(69, 65, 77); font-family: Literata, Georgia, serif; font-size: clamp(20px, 2.4vw, 26px); line-height: 1.4; color: rgb(255, 255, 255); text-wrap: pretty}
+.s183{font-size: 14px; color: rgb(169, 164, 179)}
+.s184{margin-top: 48px}
+.s185{font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(191, 178, 236); margin-bottom: 16px}
+.s186{columns: 320px 2; column-gap: 16px}
+.s187{break-inside: avoid; margin: 0px 0px 16px; padding: 10px; background: rgb(238, 234, 248); border-radius: 24px; box-shadow: rgba(0, 0, 0, 0.35) 0px 18px 40px}
+.s188{display: block; width: 100%; height: auto; border-radius: 16px}
+.s189{font-size: 14px; color: rgb(169, 164, 179); margin-top: 0px}
+.s190{margin: 40px 0px 0px; background: rgb(251, 250, 247); color: rgb(37, 35, 42); border-radius: 28px; padding: clamp(28px, 4.5vw, 48px) clamp(24px, 5vw, 56px); display: grid; gap: 20px}
+.s191{margin: 0px; font-family: Literata, Georgia, serif; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.45; letter-spacing: -0.01em; text-wrap: pretty; max-width: 900px}
+.s192{display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 12px; margin-top: 40px}
+.s193{background: rgb(255, 255, 255); border: 1px dashed rgb(201, 190, 235); border-radius: 20px; padding: 22px 24px; min-height: 150px; display: flex; flex-direction: column; justify-content: space-between; gap: 16px}
+.s194{font-family: Literata, Georgia, serif; font-style: italic; font-size: 19px; line-height: 1.45; color: rgb(169, 164, 179)}
+.s195{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(28px, 3.8vw, 44px); line-height: 1.12; letter-spacing: -0.015em; margin: 0px 0px 20px; max-width: 760px; text-wrap: balance}
+.s196{margin-top: 16px}
+.s197{border-bottom: 1px solid rgb(220, 211, 241); border-top: 1px solid rgb(220, 211, 241)}
+.s198{cursor: pointer; list-style: none; display: flex; align-items: center; gap: 16px; padding: 18px 0px}
+.s199{flex: 1 1 0%; min-width: 0px}
+.s200{display: block; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: rgb(106, 90, 168); font-family: "PT Mono", monospace}
+.s201{display: block; font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(18px, 2vw, 22px); line-height: 1.25; margin-top: 4px}
+.s202{display: block; font-size: 15px; color: rgb(91, 88, 98); margin-top: 4px}
+.s203{flex: 0 0 auto; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; background: rgb(255, 255, 255); border: 1px solid rgb(220, 211, 241); color: rgb(106, 90, 168); font-size: 20px; line-height: 1}
+.s204{padding: 0px 52px 20px 0px}
+.s205{list-style: none; margin: 0px; padding: 0px}
+.s206{display: grid; grid-template-columns: 22px 1fr; padding: 5px 0px; font-size: 16px; line-height: 1.45; color: rgb(69, 65, 77)}
+.s207{color: rgb(106, 90, 168); font-family: "PT Mono", monospace}
+.s208{margin-top: 10px; font-family: "PT Mono", monospace; font-size: 13px; color: rgb(91, 88, 98)}
+.s209{border-bottom: 1px solid rgb(220, 211, 241)}
+.s210{display: flex; align-items: center; gap: 16px; margin-top: 16px; padding: 18px 20px; border: 1px dashed rgb(140, 123, 196); border-radius: 16px}
+.s211{display: block; font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(18px, 2vw, 22px)}
+.s212{flex: 1 1 360px; max-width: 460px; min-width: 0px; background: rgb(251, 250, 247); color: rgb(37, 35, 42); border-radius: 28px; padding: clamp(24px, 3.5vw, 36px); box-sizing: border-box}
+.s213{display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-top: 18px; font-size: 15px}
+.s214{font-weight: 700}
+.s215{color: rgb(91, 88, 98)}
+.s216{margin-top: 10px; display: grid; grid-template-columns: repeat(25, minmax(0px, 1fr)); gap: 3px}
+.s217{display: block; aspect-ratio: 1 / 1; border-radius: 50%; background: rgb(232, 229, 223)}
+.s218{font-size: 13px; color: rgb(91, 88, 98); margin-top: 8px; line-height: 1.45}
+.s219{margin-top: 28px; font-family: Onest, sans-serif; font-weight: 700; font-size: 22px; color: rgb(169, 164, 179); text-decoration: line-through 2px}
+.s220{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(72px, 10vw, 112px); line-height: 0.9; letter-spacing: -0.035em}
+.s221{font-size: 17px; color: rgb(69, 65, 77); margin-top: 12px; line-height: 1.45}
+.s222{font-size: 15px; color: rgb(69, 65, 77); margin-top: 14px; line-height: 1.5}
+.s223{margin-top: 24px; padding: 14px; background: rgb(238, 234, 248); border-radius: 18px}
+.s224{display: flex; align-items: center; justify-content: center; gap: 8px; font-family: "PT Mono", monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(106, 90, 168); margin-bottom: 12px}
+.s225{width: 7px; height: 7px; border-radius: 50%; background: rgb(106, 90, 168)}
+.s226{background: rgb(255, 255, 255); border-radius: 12px; padding: 12px 0px 10px; display: flex; flex-direction: column; align-items: center; gap: 6px; box-shadow: rgb(220, 211, 241) 0px 1px 0px}
+.s227{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 36px); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: rgb(37, 35, 42)}
+.s228{font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(91, 88, 98)}
+.s229{font-family: Onest, sans-serif; font-weight: 700; font-size: clamp(28px, 3.6vw, 36px); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: rgb(106, 90, 168)}
+.s230{margin-top: 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; background: rgb(37, 35, 42); color: rgb(255, 255, 255); font-family: Onest, sans-serif; font-weight: 700; font-size: 17px; padding: 6px 6px 6px 26px; min-height: 60px; border-radius: 999px; text-decoration: none; transition: background 0.2s, transform 0.2s}
+.s231{font-size: 14px; color: rgb(91, 88, 98); margin-top: 12px; text-align: center}
+.s232{margin-top: 20px; padding-top: 16px; border-top: 1px solid rgb(232, 229, 223); display: grid; gap: 10px; font-size: 15px; line-height: 1.45; color: rgb(69, 65, 77)}
+.s233{display: grid; grid-template-columns: 22px 1fr}
+.s234{flex: 999 1 420px; min-width: 0px}
+.s235{font-family: "PT Mono", monospace; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: rgb(191, 178, 236); margin-bottom: 14px}
+.s236{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(28px, 3.6vw, 42px); line-height: 1.12; letter-spacing: -0.015em; margin: 0px 0px 28px; color: rgb(255, 255, 255); text-wrap: balance}
+.s237{border-bottom: 1px solid rgb(69, 65, 77)}
+.s238{display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 11px 0px; border-top: 1px solid rgb(69, 65, 77); font-size: 16px; color: rgb(201, 197, 209)}
+.s239{color: rgb(255, 255, 255); font-variant-numeric: tabular-nums; white-space: nowrap}
+.s240{font-size: 13px; color: rgb(191, 178, 236); border-bottom: 1px dashed rgb(191, 178, 236)}
+.s241{display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 14px 0px; border-top: 1px solid rgb(140, 123, 196); font-size: 18px; font-weight: 600; color: rgb(255, 255, 255)}
+.s242{font-variant-numeric: tabular-nums}
+.s243{margin-top: 28px; border-top: 1px solid rgb(69, 65, 77); border-bottom: 1px solid rgb(69, 65, 77)}
+.s244{cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0px; font-size: 17px; font-weight: 600; color: rgb(255, 255, 255)}
+.s245{color: rgb(191, 178, 236); font-size: 22px; line-height: 1}
+.s246{padding: 0px 0px 12px}
+.s247{display: grid; grid-template-columns: minmax(0px, 130px) minmax(0px, 1fr); gap: 4px 20px; padding: 11px 0px; border-top: 1px solid rgb(69, 65, 77); font-size: 15px}
+.s248{font-weight: 600; color: rgb(255, 255, 255)}
+.s249{color: rgb(201, 197, 209); line-height: 1.45}
+.s250{flex: 999 1 560px; min-width: 0px; border-top: 1px solid rgb(232, 229, 223)}
+.s251{border-bottom: 1px solid rgb(232, 229, 223)}
+.s252{cursor: pointer; display: flex; justify-content: space-between; align-items: baseline; gap: 20px; padding: 22px 0px; font-family: Literata, Georgia, serif; font-weight: 500; font-size: 21px; line-height: 1.35}
+.s253{font-family: Onest, sans-serif; font-weight: 400; color: rgb(106, 90, 168); font-size: 22px; flex-shrink: 0}
+.s254{margin: 0px 0px 22px; font-size: 17px; color: rgb(69, 65, 77); max-width: 620px}
+.s255{color: rgb(106, 90, 168); font-weight: 600; text-decoration: none}
+.s256{padding: clamp(64px, 10vw, 112px) 24px; background: rgb(244, 241, 250); text-align: center}
+.s257{max-width: 760px; margin: 0px auto}
+.s258{position: relative; aspect-ratio: 16 / 9; margin: 0px 0px 40px}
+.s259{font-family: Literata, Georgia, serif; font-weight: 500; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.1; letter-spacing: -0.02em; margin: 0px 0px 20px; text-wrap: balance}
+.s260{font-size: 18px; color: rgb(69, 65, 77); margin: 0px auto 12px; max-width: 540px}
+.s261{font-size: 15px; color: rgb(91, 88, 98); margin: 0px auto 32px; max-width: 540px}
+.s262{padding: 48px 24px 40px; background: rgb(37, 35, 42); color: rgb(169, 164, 179); font-size: 14px}
+.s263{max-width: 1120px; margin: 0px auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px}
+.s264{line-height: 1.6}
+.s265{font-family: Literata, Georgia, serif; font-weight: 500; font-size: 18px; color: rgb(251, 250, 247); margin-bottom: 8px}
+.s266{display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: flex-start}
+.s267{color: rgb(201, 197, 209); text-decoration: none}
+.s268{position: fixed; right: 12px; bottom: 12px; z-index: 60; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; font-family: "Golos Text", system-ui, sans-serif}
+.s269{display: flex; align-items: center; gap: 8px; background: rgb(37, 35, 42); color: rgb(255, 255, 255); border: 0px; border-radius: 999px; padding: 0px 16px; min-height: 44px; font-style: inherit; font-variant: inherit; font-weight: 600; font-stretch: inherit; font-size: 14px; line-height: inherit; font-family: inherit; font-optical-sizing: inherit; font-size-adjust: inherit; font-kerning: inherit; font-feature-settings: inherit; font-variation-settings: inherit; cursor: pointer; box-shadow: rgba(37, 35, 42, 0.25) 0px 6px 18px}
