@@ -19,6 +19,7 @@
 /* Кто ведет — подпись «Мои книги» */
 .books-label{font-family:Onest,sans-serif;font-weight:700;font-size:18px;margin-top:28px}
 .books-label+.books{margin-top:12px}
-.books-pub{font-family:"PT Mono",monospace;font-size:13px;color:var(--faint);margin-top:4px}
-.books-pub+.books{margin-top:12px}
 .book-k{font-family:"PT Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--violet);margin-bottom:6px}
+.books-one{grid-template-columns:1fr}
+.books-one .book-t+.book-t{margin-top:10px}
+.book-soon{display:inline-block;font-family:"PT Mono",monospace;font-style:normal;font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--violet);background:rgba(106,90,168,.1);border-radius:999px;padding:3px 10px;margin-left:6px;vertical-align:middle;white-space:nowrap}
