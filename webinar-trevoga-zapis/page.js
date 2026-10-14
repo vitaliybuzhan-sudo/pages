@@ -1,6 +1,23 @@
 // Таймер до конца условий и записи: 21.10.2026, 21:00 по Алматы. После — блоки .open-only скрываются, видно .closed.
 const END = Date.parse('2026-10-21T21:00:00+05:00');
+// Метки: ссылки data-link получают UTM, с которыми человек пришел (utm_source=qa_* для проверок тоже), чтобы источник дошел до заказа.
+function passUtm(root) {
+  let q; try { q = new URLSearchParams(location.search) } catch (e) { return }
+  const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+  const inc = {}; keys.forEach(k => { const v = q.get(k); if (v) inc[k] = v });
+  if (!Object.keys(inc).length) return;
+  root.querySelectorAll('a[data-link]').forEach(a => {
+    let u; try { u = new URL(a.href) } catch (e) { return }
+    if (!/^https?:$/.test(u.protocol)) return;
+    // utm_source остается web2010 (метка воронки), кроме проверок qa_*; источник письма или бота уходит в utm_content.
+    if (inc.utm_source && /^qa_/.test(inc.utm_source)) u.searchParams.set('utm_source', inc.utm_source);
+    else if (inc.utm_source && inc.utm_source !== 'web2010' && !inc.utm_content) u.searchParams.set('utm_content', inc.utm_source);
+    ['utm_medium', 'utm_content', 'utm_term'].forEach(k => { if (inc[k]) u.searchParams.set(k, inc[k]) });
+    a.href = u.toString();
+  });
+}
 export default function (root) {
+  passUtm(root);
   const wb = root.querySelector('.wb'); const els = root.querySelectorAll('[data-timer]');
   const tick = () => { const left = END - Date.now();
     if (left <= 0) { wb && wb.classList.add('is-over'); return false }
