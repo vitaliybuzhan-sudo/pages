@@ -23,3 +23,15 @@
 .books-one{grid-template-columns:1fr}
 .books-one .book-t+.book-t{margin-top:10px}
 .book-soon{display:inline-block;font-family:"PT Mono",monospace;font-style:normal;font-weight:400;font-size:12px;letter-spacing:.04em;color:var(--violet);background:rgba(106,90,168,.1);border-radius:999px;padding:3px 10px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+
+/* встроенная форма регистрации */
+.final .regbox{margin-top:34px;max-width:520px;background:#fff;border-radius:24px;padding:22px 22px 14px;box-shadow:0 10px 30px rgba(0,0,0,.18)}
+.final .regform{min-height:240px}
+.final .regform iframe{display:block;width:100%;border:0}
+.final .reg-wait{color:#6F6C75;font-size:15px;margin:8px 4px}
+.final .reg-fallback{margin-top:0;background:var(--btn);color:#fff;width:100%;justify-content:space-between}
+.final .regbox.flash{animation:regflash 1.4s ease}
+@keyframes regflash{0%,100%{box-shadow:0 10px 30px rgba(0,0,0,.18)}30%{box-shadow:0 0 0 6px #8C7BC4,0 10px 30px rgba(0,0,0,.18)}}
+@media(max-width:600px){.final .regbox{padding:16px 14px 8px;border-radius:20px}}
+@media (prefers-reduced-motion:reduce){.final .regbox.flash{animation:none}}
+.final .reg-fallback[hidden]{display:none}
