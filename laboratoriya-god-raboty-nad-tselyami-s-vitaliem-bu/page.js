@@ -5,8 +5,8 @@ const CONFIG = {
   CLOSE: Date.UTC(2026, 9, 24, 21, 0, 0), // 24.10.2026 24:00 МСК — конец продаж
   TOTAL_SEATS: 200,
   SEATS_LEFT: 200,                        // обновляется вручную по мере продаж
-  CHECKOUT_URL: '#',                      // LINK: страница оплаты «Лаборатория — год» в Prodamus XL
-  REMINDER_URL: '#',                      // LINK: подписка на напоминание 21 октября
+  CHECKOUT_URL: 'https://vitaliybuzhan.ru/laboratoriya-oplata', // оплата «Лаборатория — год» в Prodamus XL (refs.labPayUrl)
+  REMINDER_URL: 'https://t.me/vitaliybuzhan_psy', // Telegram-канал (Справочник): там 21.10 объявим старт набора
   MANAGER_URL: 'https://t.me/vitaliybuzhancom' // менеджер в Telegram (Справочник студии)
 };
 
