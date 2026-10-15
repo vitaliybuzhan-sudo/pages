@@ -1,0 +1,4 @@
+/* ручные правки */
+/* телефон до 640px: большое фото и аватарки первого экрана скрыты, вместо них маленький аватар; снизу закрепленная плашка */
+@media (max-width:640px){[data-only-desktop]{display:none!important}}
+@media (min-width:641px){[data-only-mobile]{display:none!important}}
