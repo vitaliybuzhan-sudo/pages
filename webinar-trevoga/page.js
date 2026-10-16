@@ -2,6 +2,8 @@
 // Кнопки «Зарегистрироваться» прокручивают к форме. Метки из адреса (utm_*) уходят в форму.
 // Работает как официальный виджет XL: iframe формы, подстройка высоты, переход на «Спасибо» во всем окне.
 export default function (root) {
+  // живой блок эфира: таймер → кнопка Зума за 30 минут до старта
+  import('https://vitaliybuzhan-sudo.github.io/pages/webinar-trevoga/live.js?v=1').then(m => m.default(root)).catch(e => console.error('[live]', e));
   const ID = '4QNnq_iUIUaC5xHLE4TvuQ';
   const box = root.querySelector('[data-xlform]');
   const q = new URLSearchParams(location.search);
