@@ -5,3 +5,34 @@
 @media(max-width:380px){
 .s211{font-size:clamp(34px,11vw,44px)}
 }
+
+/* Annual option: additions scoped to the tariffs section. */
+@media(min-width:1100px){
+  #formats .s213{grid-template-columns:repeat(3,minmax(0,1fr));width:min(1320px,calc(100vw - 64px));position:relative;left:50%;transform:translateX(-50%)}
+}
+@media(max-width:1099px){#formats .s213{grid-template-columns:1fr}}
+#formats .pp-year{background:#FFDC45;border-color:#d5aa19;color:#1f1d22}
+#formats .pp-sticker{position:absolute;top:-14px;right:20px;padding:5px 12px;border-radius:6px;background:#25232a;color:#fff;transform:rotate(2deg);font:600 12px/1.5 Onest,sans-serif}
+#formats .pp-label{font:12px/1.5 "PT Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:#6a5aa8;margin-bottom:16px}
+#formats .pp-year .pp-label{color:#514318}
+#formats .pp-offer-additions{display:grid;gap:24px;margin:28px 0}
+#formats .pp-offer-addition{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start}
+#formats .pp-offer-plus{font:400 30px/1.15 "PT Mono",monospace;color:#514318}
+#formats .pp-offer-title{font:700 clamp(23px,2.2vw,28px)/1.2 Onest,sans-serif;letter-spacing:-.02em}
+#formats .pp-offer-detail{font-size:16px;line-height:1.5;margin-top:8px;color:#5b5862}
+#formats .pp-year .s220{border-color:#d5aa19}
+#formats .pp-year-price small{font-size:17px;font-weight:400;letter-spacing:0;white-space:nowrap}
+#formats .pp-year .s224,#formats .pp-year .s228{color:#514318}
+#formats .pp-year-action{margin-top:22px;padding:16px 24px}
+#formats .pp-lab{margin-top:30px;padding:clamp(22px,3vw,32px);background:#eeeaf8;border-radius:20px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;scroll-margin-top:110px}
+#formats .pp-lab h3{font:500 clamp(28px,3.2vw,40px)/1.12 Literata,Georgia,serif;letter-spacing:-.025em;text-wrap:balance}
+#formats .pp-lab .pp-label{margin-bottom:12px}
+#formats .pp-lab-intro{font-size:16px;color:#5b5862;margin-top:18px;max-width:46ch}
+#formats .pp-lab-list{display:grid;gap:16px;font-size:15px;line-height:1.5;color:#5b5862}
+#formats .pp-lab-list strong{display:block;color:#1f1d22;font-family:Onest,sans-serif;font-size:17px;font-weight:600;margin-bottom:3px}
+#formats .pp-testimonial{grid-column:1/-1;border-top:1px solid #d3cce6;padding-top:24px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:center}
+#formats .pp-testimonial blockquote{font:italic 400 20px/1.5 Literata,Georgia,serif;max-width:62ch}
+#formats .pp-testimonial cite{display:block;margin-top:10px;color:#5b5862;font-size:12px;font-style:normal}
+#formats .pp-lab-link{display:block;background:#6a5aa8;color:#fff;padding:16px 22px;border-radius:999px;font:600 15px/1.5 Onest,sans-serif;text-decoration:none;text-align:center}
+#formats .pp-lab-link:hover{background:#514383;color:#fff}
+@media(max-width:900px){#formats .pp-lab{grid-template-columns:1fr;gap:22px}#formats .pp-testimonial{grid-template-columns:1fr}#formats .pp-lab-link{justify-self:start}}
