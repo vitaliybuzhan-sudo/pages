@@ -1,10 +1,12 @@
-// Живой блок эфира: таймер до старта → кнопка Зума за 30 минут → «эфир завершен».
+// Живой блок эфира: таймер до старта → кнопка Зума за 30 минут → после эфира кнопка на страницу записи.
 // Время берется с сервера (заголовок Date), а не с часов телефона.
 // Проверка без ожидания: добавить к адресу ?qa_now=2026-10-20T15:40:00Z
 const ZOOM = 'https://us02web.zoom.us/j/83700365933?pwd=69F2oWCIUa4YkwIaFHLRzXFvbqjqO9.1';
 const OPEN = Date.parse('2026-10-20T15:30:00Z');   // 20:30 Алматы · 18:30 МСК — появляется кнопка
 const START = Date.parse('2026-10-20T16:00:00Z');  // 21:00 Алматы · 19:00 МСК — старт
-const CLOSE = Date.parse('2026-10-20T17:30:00Z');  // 22:30 Алматы · 20:30 МСК — кнопка убирается
+const CLOSE = Date.parse('2026-10-20T17:30:00Z');  // 22:30 Алматы · 20:30 МСК — кнопка Зума сменяется кнопкой записи
+const REC_END = Date.parse('2026-10-21T16:00:00Z'); // 21.10, 21:00 Алматы — запись закрывается
+const REC = 'https://vitaliybuzhan.ru/webinar-trevoga-zapis';
 
 const CSS = `
 .live{border-top:1px solid #D9D1EE;padding-top:16px;display:flex;flex-direction:column;gap:10px}
@@ -20,6 +22,13 @@ const CSS = `
 `;
 
 const ARR = '<span class="arr" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>';
+const recBtn = (u, t) => `<a class="cta" href="${u}"><span>${t}</span>${ARR}</a>`;
+function recUrl() {
+  const u = new URL(REC); let q; try { q = new URLSearchParams(location.search) } catch (e) { q = new URLSearchParams() }
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(k => { const v = q.get(k); if (v) u.searchParams.set(k, v) });
+  if (!u.searchParams.get('utm_source')) { u.searchParams.set('utm_source', 'web2010'); u.searchParams.set('utm_medium', 'landing'); u.searchParams.set('utm_content', 'after_live') }
+  return u.toString();
+}
 const zoomBtn = t => `<a class="cta" href="${ZOOM}" target="_blank" rel="noopener"><span>${t}</span>${ARR}</a>`;
 
 function pad(n) { return String(n).padStart(2, '0') }
@@ -73,11 +82,17 @@ export default async function mountLive(root) {
         const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = 'Эфир 20 октября в 21:00 по Алматы, 19:00 по Москве';
       });
     } else if (p === 'after' && phase !== 'after') {
+      const rec = recUrl(); const open = t < REC_END;
       boxes.forEach(b => {
         b.className = b.className.replace(/\blive-on\b/, '').trim();
-        b.innerHTML = '<p class="live-k">Эфир завершен</p><p class="live-n">Спасибо, что были с нами. Запись пришлю на почту, она будет доступна 24 часа.</p>';
+        b.innerHTML = '<p class="live-k">Эфир завершен</p>' + recBtn(rec, open ? 'Смотреть запись эфира' : 'Открыть страницу записи') + '<p class="live-n">' + (open ? 'Запись открыта до 21 октября, 21:00 по Алматы (19:00 по Москве).' : 'Запись была открыта до 21 октября, 21:00 по Алматы. На странице — что дальше.') + '</p>';
       });
-      root.querySelectorAll('[data-live-cta]').forEach(a => { a.style.setProperty('display', 'none', 'important'); const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.style.setProperty('display', 'none', 'important') });
+      root.querySelectorAll('[data-live-cta]').forEach(old => {
+        const a = old.cloneNode(true); old.replaceWith(a);
+        a.href = rec; a.removeAttribute('target'); a.removeAttribute('data-reg'); a.style.removeProperty('display');
+        const s = a.querySelector('span'); if (s) s.textContent = open ? 'Смотреть запись эфира' : 'Открыть страницу записи'; else a.textContent = 'Запись эфира';
+        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = open ? 'Запись открыта до 21 октября, 21:00 по Алматы' : 'Запись эфира и что дальше';
+      });
     }
     if (p === 'live') {
       const started = t >= START;
