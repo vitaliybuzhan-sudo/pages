@@ -35,3 +35,6 @@
 @media(max-width:600px){.final .regbox{padding:16px 14px 8px;border-radius:20px}}
 @media (prefers-reduced-motion:reduce){.final .regbox.flash{animation:none}}
 .final .reg-fallback[hidden]{display:none}
+
+/* Дата в карточке — в одну строку, включая узкие экраны */
+.when-date{font-size:clamp(32px,8vw,44px);white-space:nowrap}
