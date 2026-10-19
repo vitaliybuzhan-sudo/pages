@@ -85,13 +85,13 @@ export default async function mountLive(root) {
       const rec = recUrl(); const open = t < REC_END;
       boxes.forEach(b => {
         b.className = b.className.replace(/\blive-on\b/, '').trim();
-        b.innerHTML = '<p class="live-k">Эфир завершен</p>' + recBtn(rec, open ? 'Смотреть запись эфира' : 'Открыть страницу записи') + '<p class="live-n">' + (open ? 'Запись открыта до 21 октября, 21:00 по Алматы (19:00 по Москве).' : 'Запись была открыта до 21 октября, 21:00 по Алматы. На странице — что дальше.') + '</p>';
+        b.innerHTML = '<p class="live-k">Эфир завершен</p>' + recBtn(rec, open ? 'Запись и условия для участников' : 'Открыть страницу записи') + '<p class="live-n">' + (open ? 'Запись появится на странице в течение пары часов после эфира. Условия открыты до 21 октября, 21:00 по Алматы (19:00 по Москве).' : 'Запись была открыта до 21 октября, 21:00 по Алматы. На странице — что дальше.') + '</p>';
       });
       root.querySelectorAll('[data-live-cta]').forEach(old => {
         const a = old.cloneNode(true); old.replaceWith(a);
         a.href = rec; a.removeAttribute('target'); a.removeAttribute('data-reg'); a.style.removeProperty('display');
-        const s = a.querySelector('span'); if (s) s.textContent = open ? 'Смотреть запись эфира' : 'Открыть страницу записи'; else a.textContent = 'Запись эфира';
-        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = open ? 'Запись открыта до 21 октября, 21:00 по Алматы' : 'Запись эфира и что дальше';
+        const s = a.querySelector('span'); if (s) s.textContent = open ? 'Запись и условия для участников' : 'Открыть страницу записи'; else a.textContent = 'Запись эфира';
+        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = open ? 'Запись появится в течение пары часов после эфира' : 'Запись эфира и что дальше';
       });
     }
     if (p === 'live') {
