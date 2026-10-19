@@ -37,10 +37,10 @@ export default function init(root, host) {
   const more = $('button[data-more]');
   if (more && scenes) more.addEventListener('click', () => scenes.setAttribute('data-scenes', 'expanded'));
 
-  // Общие продажи: 21.10 12:00 Алматы — 24.10 24:00 МСК. Кнопки предзаписи сами меняются на «Оплатить».
+  // Общие продажи: 21.10 12:00 Алматы — 24.10 23:59 Алматы (21:59 МСК). Кнопки предзаписи сами меняются на «Оплатить».
   // Проверка без ожидания: ?qa_now=2026-10-21T07:05:00Z
   const OPEN = Date.parse('2026-10-21T07:00:00Z');
-  const CLOSE = Date.parse('2026-10-24T21:00:00Z');
+  const CLOSE = Date.parse('2026-10-24T18:59:59Z');
   const PAY = 'https://vitaliybuzhan.ru/pravila-oplata';
   const CHAT = 'https://t.me/+xIlds4Qm_dplZjky';
   const qa = new URLSearchParams(location.search).get('qa_now');
@@ -65,7 +65,7 @@ export default function init(root, host) {
       else { a.href = CHAT; a.target = '_blank'; if (l != null) label(a, l.trim()); }
     });
     if (cdTitle) cdTitle.textContent = ph === 'open' ? 'До закрытия продаж' : ph === 'closed' ? 'Продажи закрыты' : 'До открытия общих продаж';
-    if (cdNote) cdNote.textContent = ph === 'open' ? 'Продажи открыты до 24 октября, 24:00 МСК' : ph === 'closed' ? 'Следите за новостями в канале' : 'Общие продажи открываются 21 октября в 12:00 Алматы / 10:00 МСК';
+    if (cdNote) cdNote.textContent = ph === 'open' ? 'Продажи открыты до 24 октября, 23:59 по Алматы / 21:59 МСК' : ph === 'closed' ? 'Следите за новостями в канале' : 'Общие продажи открываются 21 октября в 12:00 Алматы / 10:00 МСК';
   };
 
   // Countdown: до открытия продаж, затем до закрытия.
