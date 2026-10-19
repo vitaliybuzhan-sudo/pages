@@ -1,6 +1,6 @@
 // Лаборатория: состояние набора (до открытия / открыт / закрыт), таймер и кнопки. Работает внутри shadow root загрузчика.
 // Ранний доступ для участников вебинара: ?ea=webinar — покупка открыта сразу, до общего набора 21 октября.
-const OPEN = Date.UTC(2026, 9, 21, 9, 0, 0);    // 21.10, 12:00 МСК
+const OPEN = Date.UTC(2026, 9, 21, 7, 0, 0);    // 21.10, 12:00 Алматы (10:00 МСК)
 const CLOSE = Date.UTC(2026, 9, 24, 21, 0, 0);  // 24.10, 24:00 МСК
 const CHECKOUT = 'https://vitaliybuzhan.ru/laboratoriya-oplata';   // оплата «Лаборатория — год» в Prodamus XL (страница DUk3ZSX8ZE2OmVLLdpY9xA, продукт gMMyOtQIC0yMdpsKWC1zFg); откроется после публикации
 const REMIND = '#remind';      // Интегратор: подписка на напоминание 21.10
@@ -12,7 +12,7 @@ export default function (root) {
   const state = () => { const n = Date.now(); return n >= CLOSE ? 'closed' : (n >= OPEN || ea) ? 'open' : 'before'; };
   const early = () => ea && Date.now() < OPEN;
   const T = {
-    before: { cta: 'Напомнить 21 октября', short: 'Напомнить', href: REMIND, label: 'До открытия набора', note: 'Набор на 200 мест откроется 21 октября в 12:00 МСК — пришлем напоминание' },
+    before: { cta: 'Напомнить 21 октября', short: 'Напомнить', href: REMIND, label: 'До открытия набора', note: 'Набор на 200 мест откроется 21 октября в 12:00 по Алматы (10:00 МСК) — пришлем напоминание' },
     open: { cta: 'Занять место в Лаборатории', short: 'Занять место', href: CHECKOUT, label: 'До закрытия набора', note: '' },
     closed: { cta: 'Набор закрыт', short: 'Набор закрыт', href: '#price', label: '', note: 'Следующий набор — в начале 2027 года, $399 за год' }
   };
