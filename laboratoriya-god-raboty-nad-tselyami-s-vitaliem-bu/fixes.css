@@ -25,3 +25,6 @@
 .lab-kzt-price{font:600 17px/1.5 Onest,sans-serif;margin:8px 0;color:inherit}
 .lab-rf-price{font-size:13px;line-height:1.5;margin:8px 0;color:inherit}
 .lab-payment-note{font-size:14px;line-height:1.6;margin:16px 0;color:inherit}
+
+/* Keep the rotated decorative badge inside the page width. */
+.s44{right:0}
