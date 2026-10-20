@@ -1,10 +1,11 @@
-// Живой блок эфира: таймер до старта → кнопка Зума за 30 минут → после эфира кнопка на страницу записи.
+// Живой блок эфира: вход за 30 минут → «Мы в эфире» → час ожидания записи → честный статус подготовки.
 // Время берется с сервера (заголовок Date), а не с часов телефона.
 // Проверка без ожидания: добавить к адресу ?qa_now=2026-10-20T15:40:00Z
 const ZOOM = 'https://us02web.zoom.us/j/83700365933?pwd=69F2oWCIUa4YkwIaFHLRzXFvbqjqO9.1';
 const OPEN = Date.parse('2026-10-20T15:30:00Z');   // 20:30 Алматы · 18:30 МСК — появляется кнопка
 const START = Date.parse('2026-10-20T16:00:00Z');  // 21:00 Алматы · 19:00 МСК — старт
 const CLOSE = Date.parse('2026-10-20T17:30:00Z');  // 22:30 Алматы · 20:30 МСК — кнопка Зума сменяется кнопкой записи
+const REC_EXPECTED = Date.parse('2026-10-20T18:30:00Z'); // 20.10, 23:30 Алматы — ожидаем публикацию, не подтверждаем готовность
 const REC_END = Date.parse('2026-10-21T16:00:00Z'); // 21.10, 21:00 Алматы — запись закрывается
 const SALES_END = Date.parse('2026-10-24T18:59:00Z'); // 24.10, 23:59 Алматы — продажи закрываются
 const REC = 'https://vitaliybuzhan.ru/webinar-trevoga-zapis';
@@ -60,7 +61,7 @@ export default async function mountLive(root) {
   let phase = '';
   function render() {
     const t = now();
-    const p = t < OPEN ? 'before' : t < CLOSE ? 'live' : t < REC_END ? 'after' : t < SALES_END ? 'record-closed' : 'sales-closed';
+    const p = t < OPEN ? 'before' : t < CLOSE ? 'live' : t < REC_EXPECTED ? 'preparing' : t < REC_END ? 'pending' : t < SALES_END ? 'record-closed' : 'sales-closed';
     if (p === 'before') {
       boxes.forEach(b => {
         if (phase !== 'before') {
@@ -71,7 +72,6 @@ export default async function mountLive(root) {
       });
     } else if (p === 'live' && phase !== 'live') {
       boxes.forEach(b => {
-        b.classList.add('live-on');
         b.innerHTML = '<p class="live-k" data-k></p>' + zoomBtn('Подключиться к эфиру в Зум') + '<p class="live-n" data-n></p>';
       });
       root.querySelectorAll('[data-live-cta]').forEach(old => {
@@ -82,26 +82,35 @@ export default async function mountLive(root) {
         const s = a.querySelector('span'); if (s) s.textContent = 'Подключиться к эфиру в Зум'; else a.textContent = 'Войти в эфир';
         const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = 'Эфир 20 октября в 21:00 по Алматы, 19:00 по Москве';
       });
-    } else if (['after', 'record-closed', 'sales-closed'].includes(p) && phase !== p) {
+    } else if (['preparing', 'pending', 'record-closed', 'sales-closed'].includes(p) && phase !== p) {
       const rec = recUrl(); const open = t < REC_END; const salesOpen = t < SALES_END;
+      const title = open ? 'Готовим запись' : 'Эфир завершен';
+      const waiting = p === 'preparing' ? '<p class="live-n">До ожидаемой публикации записи</p><p class="live-t" data-record-left></p>' : '';
+      const note = p === 'preparing'
+        ? 'Ожидаем запись к 23:30 по Алматы. Срок доступа к записи — до 21 октября, 21:00 по Алматы.'
+        : p === 'pending'
+          ? 'Запись готовится. Появится <a href="' + rec + '">здесь</a>. Срок доступа к записи — до 21 октября, 21:00 по Алматы.'
+          : salesOpen ? 'Срок доступа к записи завершился 21 октября в 21:00 по Алматы. Продажи и условия участия открыты до 24 октября, 23:59 по Алматы.' : 'Срок доступа к записи завершился 21 октября в 21:00 по Алматы. Продажи закрылись 24 октября в 23:59 по Алматы. На странице — что дальше.';
       boxes.forEach(b => {
         b.className = b.className.replace(/\blive-on\b/, '').trim();
-        b.innerHTML = '<p class="live-k">Эфир завершен</p>' + recBtn(rec, open ? 'Запись и условия для участников' : salesOpen ? 'Условия участия' : 'Открыть страницу записи') + '<p class="live-n">' + (open ? 'Запись появится в течение пары часов после эфира и будет открыта до 21 октября, 21:00 по Алматы. Продажи и условия участия — до 24 октября, 23:59 по Алматы.' : salesOpen ? 'Запись была открыта до 21 октября, 21:00 по Алматы. Продажи и условия участия открыты до 24 октября, 23:59 по Алматы.' : 'Запись была открыта до 21 октября, 21:00 по Алматы. Продажи закрылись 24 октября в 23:59 по Алматы. На странице — что дальше.') + '</p>';
+        b.innerHTML = '<p class="live-k">' + title + '</p>' + waiting + recBtn(rec, open ? 'Открыть страницу записи' : salesOpen ? 'Условия участия' : 'Открыть страницу записи') + '<p class="live-n">' + note + '</p>';
       });
       root.querySelectorAll('[data-live-cta]').forEach(old => {
         const a = old.cloneNode(true); old.replaceWith(a);
         a.href = rec; a.removeAttribute('target'); a.removeAttribute('data-reg'); a.style.removeProperty('display');
-        const s = a.querySelector('span'); if (s) s.textContent = open ? 'Запись и условия для участников' : salesOpen ? 'Условия участия' : 'Открыть страницу записи'; else a.textContent = 'Запись эфира';
-        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = open ? 'Запись появится в течение пары часов после эфира' : 'Запись эфира и что дальше';
+        const s = a.querySelector('span'); if (s) s.textContent = open ? 'Открыть страницу записи' : salesOpen ? 'Условия участия' : 'Открыть страницу записи'; else a.textContent = 'Запись эфира';
+        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = p === 'preparing' ? 'Готовим запись. Ожидаем публикацию в 23:30 по Алматы' : open ? 'Запись готовится. Появится на странице записи' : 'Запись эфира и что дальше';
       });
     }
     if (p === 'live') {
       const started = t >= START;
       boxes.forEach(b => {
-        b.querySelector('[data-k]').textContent = started ? 'Эфир идет' : 'Скоро начинаем';
+        b.classList.toggle('live-on', started);
+        b.querySelector('[data-k]').textContent = started ? 'Мы в эфире' : 'Скоро начинаем';
         b.querySelector('[data-n]').textContent = started ? 'Заходите, мы уже в эфире.' : 'Старт в 21:00 по Алматы (19:00 по Москве), через ' + Math.max(1, Math.ceil((START - t) / 60000)) + ' мин. Можно зайти заранее.';
       });
     }
+    if (p === 'preparing') boxes.forEach(b => { b.querySelector('[data-record-left]').textContent = left(REC_EXPECTED - t); });
     phase = p;
   }
   render();
