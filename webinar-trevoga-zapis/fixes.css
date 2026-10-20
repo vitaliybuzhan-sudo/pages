@@ -28,3 +28,34 @@
 .wb:not(.offer-wait) .sales-open,.wb:not(.offer-wait) [data-offer]{animation:offer-reveal .35s ease both}
 @keyframes offer-reveal{from{opacity:0}to{opacity:1}}
 @media(prefers-reduced-motion:reduce){.wb .sales-open,.wb [data-offer]{animation:none!important}}
+
+/* The published recording fills its own 16:9 frame. */
+.video.record-player{position:relative;display:block;padding:0;overflow:hidden;aspect-ratio:16/9}
+.record-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+/* Guarantee and support stay available after sales have closed. */
+.offer-wait:not(.sales-over) [data-offer-delay]{display:none!important}
+
+/* Approved poster composition: large left artwork, mobile background, real player. */
+.replay-hero{padding:0}
+.replay-hero-layout{position:relative;display:grid;grid-template-columns:minmax(0,39%) minmax(0,1fr);gap:5.7%;max-width:1280px;margin:0 auto;padding:54px 5.7% 70px 2.2%}
+.replay-hero-layout>.replay-poster{width:100%;align-self:start;box-shadow:0 24px 40px -28px #1b1712b3}
+.replay-hero-layout>.replay-poster img{width:100%;height:auto;max-height:none;border-radius:0;object-fit:contain}
+.replay-hero .replay-main{min-width:0;max-width:none;width:100%;padding-top:31px}
+.replay-hero h1{font-size:clamp(40px,6.65vw,80px);line-height:.99;letter-spacing:-.055em;margin:23px 0 22px}
+.replay-hero .record-media{display:block;margin-top:65px}
+.replay-hero .video{border-radius:15px}
+@media(max-width:800px){
+ .replay-hero-layout{display:block;isolation:isolate;padding:385px 20px 28px;background:#19181b;overflow:hidden}
+ .replay-hero-layout>.replay-poster{position:absolute;z-index:0;inset:0 0 auto;box-shadow:none;pointer-events:none}
+ .replay-hero-layout>.replay-poster img{width:100%;max-height:none;margin:0}
+ .replay-hero-layout::before{content:"";position:absolute;z-index:1;inset:0;pointer-events:none;background:linear-gradient(180deg,#19181b00 0,#19181b00 160px,#19181b26 300px,#19181be6 385px,#19181b 650px,#19181b 100%)}
+ .replay-hero .replay-main{position:relative;z-index:2;padding-top:0}
+ .replay-hero h1{color:#f9f6ef;font-size:44px;margin:15px 0;line-height:.99}
+ .replay-hero .meta,.replay-hero .meta strong{color:#d8d4c9}
+ .replay-hero .lead{color:#d0ccc3;font-size:15px}
+ .replay-hero .pg-note{color:#bbb8af}
+ .replay-hero .links2 a{color:#ddd3ff}
+ .replay-hero .record-media{margin-top:30px}
+ .replay-hero .video{border:1px solid #ffffff24;border-radius:12px}
+}
+@media(max-width:350px){.replay-hero-layout{padding:320px 16px 25px}.replay-hero h1{font-size:38px}}
