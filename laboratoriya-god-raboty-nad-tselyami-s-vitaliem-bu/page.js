@@ -1,23 +1,33 @@
 // Лаборатория (лендинг из Claude Design v9): состояние набора, таймер, места, кнопки и анимации. Работает внутри shadow root загрузчика.
 // Ранний доступ для участников вебинара: ?ea=webinar — покупка открыта сразу, до общего набора 21 октября.
+// Свободные места берутся из seats.json (его обновляет задача по расписанию: оплаты в Продамусе + места, оформленные менеджером вручную). Если файл недоступен — SEATS_LEFT.
 const CONFIG = {
   OPEN: Date.UTC(2026, 9, 21, 7, 0, 0),   // 21.10.2026 12:00 Алматы (10:00 МСК) — старт продаж
-  CLOSE: Date.UTC(2026, 9, 24, 18, 59, 0), // 24.10.2026 23:59 Алматы — конец продаж
+  CLOSE: Date.UTC(2026, 9, 24, 21, 0, 0), // 24.10.2026 24:00 МСК — конец продаж
   TOTAL_SEATS: 200,
-  SEATS_LEFT: 198,                        // обновляется вручную по мере продаж (занято 2 — 20.10.2026)
+  SEATS_LEFT: 194,                        // запасное значение, если seats.json не загрузился (6 занято: 5 вручную + 1 оплата, 20.10.2026)
+  SEATS_URL: 'https://vitaliybuzhan-sudo.github.io/pages/laboratoriya-god-raboty-nad-tselyami-s-vitaliem-bu/seats.json',
   CHECKOUT_URL: 'https://vitaliybuzhan.ru/laboratoriya-oplata', // оплата «Лаборатория — год» в Prodamus XL (refs.labPayUrl)
   REMINDER_URL: 'https://vitaliybuzhan.kz/b/107335/103107', // Telegram-бот №107335: напоминание об открытии набора 21.10 12:00 МСК (решение Виталия 15.10)
   MANAGER_URL: 'https://t.me/vitaliybuzhancom' // менеджер в Telegram (Справочник студии)
 };
 
-export default function (root) {
+export default async function (root) {
   const doc = root.ownerDocument || document;
   const $ = s => root.querySelector(s), $$ = (s, r) => Array.from((r || root).querySelectorAll(s));
   const q = new URLSearchParams(location.search);
   const ea = q.get('ea') === 'webinar';
   const keep = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].filter(k => q.get(k)).map(k => k + '=' + encodeURIComponent(q.get(k))).join('&');
   const withUtm = u => (!u || u.startsWith('#') || !keep) ? u : u + (u.includes('?') ? '&' : '?') + keep;
-  const TOTAL = CONFIG.TOTAL_SEATS, seats = Math.max(0, Math.min(TOTAL, CONFIG.SEATS_LEFT));
+  const TOTAL = CONFIG.TOTAL_SEATS;
+  let seats = Math.max(0, Math.min(TOTAL, CONFIG.SEATS_LEFT));
+  // актуальное число мест: ждем файл не дольше 1,5 с, иначе берем запасное значение
+  try {
+    const ctl = new AbortController(); const tm0 = setTimeout(() => ctl.abort(), 1500);
+    const r = await fetch(CONFIG.SEATS_URL + '?t=' + Math.floor(Date.now() / 60000), { signal: ctl.signal, cache: 'no-store' });
+    clearTimeout(tm0);
+    if (r.ok) { const j = await r.json(); if (Number.isFinite(j.left)) seats = Math.max(0, Math.min(TOTAL, Math.round(j.left))); }
+  } catch (e) { /* остается запасное значение */ }
   const state = () => { const n = Date.now(); if (n >= CONFIG.CLOSE || seats === 0) return 'closed'; return (n >= CONFIG.OPEN || ea) ? 'open' : 'before'; };
   const early = () => ea && Date.now() < CONFIG.OPEN;
   const p = n => String(n).padStart(2, '0');
@@ -35,12 +45,11 @@ export default function (root) {
       last = st;
       const L = {
         before: { href: CONFIG.REMINDER_URL, cta: 'Напомнить 21 октября', cta2: 'Напомнить 21 октября', short: 'Напомнить', note: 'Набор на 200 мест откроется 21 октября в 12:00 по Алматы (10:00 МСК) — пришлю напоминание в Telegram' },
-        open: { href: CONFIG.CHECKOUT_URL, cta: 'Оплатить', cta2: 'Оплатить', short: 'Оплатить',
-          note: early() ? 'Ранний доступ для участников вебинара — до открытия общего набора · 14 дней на возврат' : `Осталось ${seats} из ${TOTAL} мест · продажи до 24 октября, 23:59 по Алматы · 14 дней на возврат после оплаты` },
+        open: { href: CONFIG.CHECKOUT_URL, cta: 'Занять место в Лаборатории', cta2: 'Занять место — тренинг уже внутри', short: 'Занять место',
+          note: early() ? 'Ранний доступ для участников вебинара — до открытия общего набора · 14 дней на возврат' : `Осталось ${seats} из ${TOTAL} мест · продажи до 24 октября · 14 дней на возврат после оплаты` },
         closed: { href: '#price', cta: 'Набор закрыт', cta2: 'Набор закрыт', short: 'Набор закрыт', note: 'Следующий набор — в начале 2027 года, $399 за год' }
       }[st];
       $$('[data-href="cta"]').forEach(a => a.setAttribute('href', withUtm(L.href)));
-      $$('[data-rf-pay]').forEach(el => { el.hidden = st !== 'open'; if (el.tagName === 'A') el.setAttribute('href', withUtm('https://vitaliybuzhan.ru/laboratoriya-oplata-rf')); });
       set('ctaLabel', L.cta); set('ctaLabel2', L.cta2); set('shortLabel', L.short); set('ctaNote', L.note);
       set('seatsBadge', st === 'open' ? `Осталось ${seats} из ${TOTAL} мест` : `Только ${TOTAL} мест`);
       set('seatsFinal', st === 'open' ? `осталось ${seats} из ${TOTAL} мест` : `всего ${TOTAL} мест`);
