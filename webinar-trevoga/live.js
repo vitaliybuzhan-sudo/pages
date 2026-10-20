@@ -29,7 +29,7 @@ const recBtn = (u, t) => `<a class="cta" href="${u}"><span>${t}</span>${ARR}</a>
 function recUrl() {
   const u = new URL(REC); let q; try { q = new URLSearchParams(location.search) } catch (e) { q = new URLSearchParams() }
   ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(k => { const v = q.get(k); if (v) u.searchParams.set(k, v) });
-  if (!u.searchParams.get('utm_source')) { u.searchParams.set('utm_source', 'web2010'); u.searchParams.set('utm_medium', 'landing'); u.searchParams.set('utm_content', 'after_live') }
+  if (!u.searchParams.get('utm_source')) { u.searchParams.set('utm_source', 'web2010'); if (!u.searchParams.get('utm_medium')) u.searchParams.set('utm_medium', 'landing'); if (!u.searchParams.get('utm_content')) u.searchParams.set('utm_content', 'after_live') }
   return u.toString();
 }
 const zoomBtn = t => `<a class="cta" href="${ZOOM}" target="_blank" rel="noopener"><span>${t}</span>${ARR}</a>`;
@@ -53,15 +53,26 @@ export default async function mountLive(root) {
   const qa = new URLSearchParams(location.search).get('qa_now');
   if (qa && !isNaN(Date.parse(qa))) skew = Date.parse(qa) - Date.now();
   else try {
-    const r = await fetch(location.origin + '/?_t=' + Date.now(), { method: 'HEAD', cache: 'no-store' });
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000);
+    let r;
+    try { r = await fetch(location.origin + '/?_t=' + Date.now(), { method: 'HEAD', cache: 'no-store', signal: controller.signal }); }
+    finally { clearTimeout(timeout); }
     const d = Date.parse(r.headers.get('date') || '');
     if (!isNaN(d)) skew = d - Date.now();
   } catch (e) {}
   const now = () => Date.now() + skew;
 
   let phase = '';
+  let redirected = false;
   function render() {
     const t = now();
+    // После завершения эфира ведем на запись/ожидание, сохраняя только UTM-метки.
+    // replace не возвращает человека назад в регистрацию; на странице записи редиректа нет.
+    if (t >= CLOSE && !redirected && /^\/svoboda-ot-trevogi\/?$/.test(location.pathname)) {
+      redirected = true;
+      location.replace(recUrl());
+    }
     const p = t < OPEN ? 'before' : t < CLOSE ? 'live' : t < REC_EXPECTED ? 'preparing' : t < REC_END ? 'pending' : t < SALES_END ? 'record-closed' : 'sales-closed';
     if (p === 'before') {
       boxes.forEach(b => {
