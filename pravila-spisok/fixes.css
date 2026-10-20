@@ -1,0 +1,4 @@
+/* ручные правки */
+.tariffs small{font-family:"PT Mono",monospace;font-size:12px;color:var(--muted)}
+.promo-box{margin:18px 0 0;padding:14px 16px;border:1px dashed var(--muted);border-radius:12px}
+.promo-box b{font-family:"PT Mono",monospace;font-size:18px;letter-spacing:.04em}
