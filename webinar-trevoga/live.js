@@ -1,11 +1,11 @@
-// Живой блок эфира: вход за 30 минут → «Мы в эфире» → час ожидания записи → честный статус подготовки.
+// Живой блок эфира: вход за 30 минут → «Мы в эфире» → ожидание записи → честный статус подготовки.
 // Время берется с сервера (заголовок Date), а не с часов телефона.
 // Проверка без ожидания: добавить к адресу ?qa_now=2026-10-20T15:40:00Z
 const ZOOM = 'https://us02web.zoom.us/j/83700365933?pwd=69F2oWCIUa4YkwIaFHLRzXFvbqjqO9.1';
 const OPEN = Date.parse('2026-10-20T15:30:00Z');   // 20:30 Алматы · 18:30 МСК — появляется кнопка
 const START = Date.parse('2026-10-20T16:00:00Z');  // 21:00 Алматы · 19:00 МСК — старт
-const CLOSE = Date.parse('2026-10-20T17:30:00Z');  // 22:30 Алматы · 20:30 МСК — кнопка Зума сменяется кнопкой записи
-const REC_EXPECTED = Date.parse('2026-10-20T18:30:00Z'); // 20.10, 23:30 Алматы — ожидаем публикацию, не подтверждаем готовность
+const CLOSE = Date.parse('2026-10-20T17:24:49Z');  // 22:24:49 Алматы — эфир завершен, открываем ожидание записи
+const REC_EXPECTED = Date.parse('2026-10-20T18:05:00Z'); // 20.10, 23:05 Алматы — ожидаем публикацию, не подтверждаем готовность
 const REC_END = Date.parse('2026-10-21T16:00:00Z'); // 21.10, 21:00 Алматы — запись закрывается
 const SALES_END = Date.parse('2026-10-24T18:59:00Z'); // 24.10, 23:59 Алматы — продажи закрываются
 const REC = 'https://vitaliybuzhan.ru/webinar-trevoga-zapis';
@@ -88,7 +88,7 @@ export default async function mountLive(root) {
       const title = open ? 'Готовим запись' : 'Эфир завершен';
       const waiting = p === 'preparing' ? '<p class="live-n">До ожидаемой публикации записи</p><p class="live-t" data-record-left></p>' : '';
       const note = p === 'preparing'
-        ? 'Ожидаем запись к 23:30 по Алматы. Срок доступа к записи — до 21 октября, 21:00 по Алматы.'
+        ? 'Ожидаем запись к 23:05 по Алматы. Срок доступа к записи — до 21 октября, 21:00 по Алматы.'
         : p === 'pending'
           ? 'Запись готовится. Появится <a href="' + rec + '">здесь</a>. Срок доступа к записи — до 21 октября, 21:00 по Алматы.'
           : salesOpen ? 'Срок доступа к записи завершился 21 октября в 21:00 по Алматы. Продажи и условия участия открыты до 24 октября, 23:59 по Алматы.' : 'Срок доступа к записи завершился 21 октября в 21:00 по Алматы. Продажи закрылись 24 октября в 23:59 по Алматы. На странице — что дальше.';
@@ -100,7 +100,7 @@ export default async function mountLive(root) {
         const a = old.cloneNode(true); old.replaceWith(a);
         a.href = rec; a.removeAttribute('target'); a.removeAttribute('data-reg'); a.style.removeProperty('display');
         const s = a.querySelector('span'); if (s) s.textContent = open ? 'Открыть страницу записи' : salesOpen ? 'Условия участия' : 'Открыть страницу записи'; else a.textContent = 'Запись эфира';
-        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = p === 'preparing' ? 'Готовим запись. Ожидаем публикацию в 23:30 по Алматы' : open ? 'Запись готовится. Появится на странице записи' : 'Запись эфира и что дальше';
+        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = p === 'preparing' ? 'Готовим запись. Ожидаем публикацию в 23:05 по Алматы' : open ? 'Запись готовится. Появится на странице записи' : 'Запись эфира и что дальше';
       });
     }
     if (p === 'live') {

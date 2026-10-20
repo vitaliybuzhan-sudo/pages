@@ -8,3 +8,10 @@
 .record-closed,.sales-closed{display:none}
 .record-over .record-open,.sales-over .sales-open{display:none!important}
 .record-over .record-closed,.sales-over .sales-closed{display:block}
+
+/* Waiting placeholder: publication ETA is not a video-ready signal. */
+.offer-link{margin-top:20px}
+.record-status{font-family:Onest,sans-serif;font-size:24px;color:#fff}
+.record-eta{margin:16px 0}
+.record-eta b{display:block;margin-top:8px;font-size:clamp(24px,4vw,32px);color:#fff;font-variant-numeric:tabular-nums}
+.record-eta[hidden]{display:none}
