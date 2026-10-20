@@ -1,6 +1,6 @@
-// Таймер до конца окна продаж для списка предзаписи: 24.10.2026, 23:59:59 по Алматы. После — блоки .open-only скрываются, видно .closed.
-const END = Date.parse('2026-10-24T23:59:59+05:00');
-// Проверка без ожидания: ?qa_now=2026-10-24T18:59:50Z
+// Таймер до конца окна продаж для списка предзаписи: 24.10.2026, 23:59:00 по Алматы. После — блоки .open-only скрываются, видно .closed.
+const END = Date.parse('2026-10-24T23:59:00+05:00');
+// Проверка без ожидания: ?qa_now=2026-10-24T18:58:50Z
 function passUtm(root) {
   let q; try { q = new URLSearchParams(location.search) } catch (e) { return }
   const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];

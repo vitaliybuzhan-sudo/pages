@@ -36,3 +36,13 @@
 #formats .pp-lab-link{display:block;background:#6a5aa8;color:#fff;padding:16px 22px;border-radius:999px;font:600 15px/1.5 Onest,sans-serif;text-decoration:none;text-align:center}
 #formats .pp-lab-link:hover{background:#514383;color:#fff}
 @media(max-width:900px){#formats .pp-lab{grid-template-columns:1fr;gap:22px}#formats .pp-testimonial{grid-template-columns:1fr}#formats .pp-lab-link{justify-self:start}}
+
+
+/* Payment choices follow the existing opening/closing gate. */
+[data-sale-only][hidden],[data-card-prereg][hidden]{display:none!important}
+#formats .pp-pay-actions{display:grid;gap:12px}
+#formats .pp-pay-arrow{display:grid;place-items:center;flex:0 0 48px;width:48px;height:48px;border-radius:50%;background:#6a5aa8;color:#fff;font-size:25px}
+#formats .pp-pay-actions a{min-width:0}
+#formats .pp-pay-actions b{overflow-wrap:normal}
+#formats .pp-rf-price{font-size:13px;line-height:1.5;opacity:.85;margin:0}
+#formats .pp-rf-note{font-size:14px;line-height:1.6;color:#5b5862;margin-top:20px}

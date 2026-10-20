@@ -16,3 +16,12 @@
 @keyframes seatPulse{0%,100%{opacity:.35;transform:scale(.9)}50%{opacity:1;transform:scale(1.25)}}
 @keyframes seatRing{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.4);opacity:0}}
 @media (prefers-reduced-motion:reduce){.seat-next,.seat-next::after{animation:none}.seat-next{opacity:1}}
+
+
+/* Country-specific payment choices stay within the existing enrollment window. */
+[data-rf-pay][hidden]{display:none!important}
+.lab-rf-pay{max-width:100%;box-sizing:border-box}
+#price .lab-rf-pay{margin-top:12px}
+.lab-kzt-price{font:600 17px/1.5 Onest,sans-serif;margin:8px 0;color:inherit}
+.lab-rf-price{font-size:13px;line-height:1.5;margin:8px 0;color:inherit}
+.lab-payment-note{font-size:14px;line-height:1.6;margin:16px 0;color:inherit}

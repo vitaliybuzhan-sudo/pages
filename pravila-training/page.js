@@ -37,17 +37,17 @@ export default function init(root, host) {
   const more = $('button[data-more]');
   if (more && scenes) more.addEventListener('click', () => scenes.setAttribute('data-scenes', 'expanded'));
 
-  // Общие продажи: 21.10 12:00 Алматы — 24.10 23:59 Алматы (21:59 МСК). Кнопки предзаписи сами меняются на «Оплатить».
+  // Общие продажи: 21.10 12:00 Алматы — 24.10 23:59 Алматы. Кнопки предзаписи сами меняются на «Оплатить».
   // Проверка без ожидания: ?qa_now=2026-10-21T07:05:00Z
   const OPEN = Date.parse('2026-10-21T07:00:00Z');
-  const CLOSE = Date.parse('2026-10-24T18:59:59Z');
+  const CLOSE = Date.parse('2026-10-24T18:59:00Z');
   const PAY = 'https://vitaliybuzhan.ru/pravila-oplata';
   const CHAT = 'https://t.me/+xIlds4Qm_dplZjky';
   const qa = new URLSearchParams(location.search).get('qa_now');
   const skew = qa && !isNaN(Date.parse(qa)) ? Date.parse(qa) - Date.now() : 0;
   const now = () => Date.now() + skew;
-  const payUrl = () => {
-    const u = new URL(PAY); const q = new URLSearchParams(location.search);
+  const payUrl = (base = PAY) => {
+    const u = new URL(base); const q = new URLSearchParams(location.search);
     ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach((k) => { const v = q.get(k); if (v) u.searchParams.set(k, v); });
     if (!u.searchParams.get('utm_source')) { u.searchParams.set('utm_source', 'landing'); u.searchParams.set('utm_medium', 'pravila-training'); }
     return u.toString();
@@ -64,8 +64,11 @@ export default function init(root, host) {
       if (ph === 'open') { a.href = payUrl(); a.removeAttribute('target'); label(a, a.closest('header') ? 'Оплатить' : 'Оплатить участие'); }
       else { a.href = CHAT; a.target = '_blank'; if (l != null) label(a, l.trim()); }
     });
+    $$('[data-card-prereg]').forEach(a => { a.hidden = ph === 'open'; });
+    $$('[data-sale-only]').forEach(a => { a.hidden = ph !== 'open'; });
+    $$('a[data-sale-url]').forEach(a => { a.href = payUrl(a.getAttribute('data-sale-url')); });
     if (cdTitle) cdTitle.textContent = ph === 'open' ? 'До закрытия продаж' : ph === 'closed' ? 'Продажи закрыты' : 'До открытия общих продаж';
-    if (cdNote) cdNote.textContent = ph === 'open' ? 'Продажи открыты до 24 октября, 23:59 по Алматы / 21:59 МСК' : ph === 'closed' ? 'Следите за новостями в канале' : 'Общие продажи открываются 21 октября в 12:00 Алматы / 10:00 МСК';
+    if (cdNote) cdNote.textContent = ph === 'open' ? 'Продажи открыты до 24 октября, 23:59 по Алматы' : ph === 'closed' ? 'Следите за новостями в канале' : 'Общие продажи открываются 21 октября в 12:00 Алматы / 10:00 МСК';
   };
 
   // Countdown: до открытия продаж, затем до закрытия.

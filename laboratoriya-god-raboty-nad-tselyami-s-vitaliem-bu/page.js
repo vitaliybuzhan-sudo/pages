@@ -2,7 +2,7 @@
 // Ранний доступ для участников вебинара: ?ea=webinar — покупка открыта сразу, до общего набора 21 октября.
 const CONFIG = {
   OPEN: Date.UTC(2026, 9, 21, 7, 0, 0),   // 21.10.2026 12:00 Алматы (10:00 МСК) — старт продаж
-  CLOSE: Date.UTC(2026, 9, 24, 21, 0, 0), // 24.10.2026 24:00 МСК — конец продаж
+  CLOSE: Date.UTC(2026, 9, 24, 18, 59, 0), // 24.10.2026 23:59 Алматы — конец продаж
   TOTAL_SEATS: 200,
   SEATS_LEFT: 198,                        // обновляется вручную по мере продаж (занято 2 — 20.10.2026)
   CHECKOUT_URL: 'https://vitaliybuzhan.ru/laboratoriya-oplata', // оплата «Лаборатория — год» в Prodamus XL (refs.labPayUrl)
@@ -35,11 +35,12 @@ export default function (root) {
       last = st;
       const L = {
         before: { href: CONFIG.REMINDER_URL, cta: 'Напомнить 21 октября', cta2: 'Напомнить 21 октября', short: 'Напомнить', note: 'Набор на 200 мест откроется 21 октября в 12:00 по Алматы (10:00 МСК) — пришлю напоминание в Telegram' },
-        open: { href: CONFIG.CHECKOUT_URL, cta: 'Занять место в Лаборатории', cta2: 'Занять место — тренинг уже внутри', short: 'Занять место',
-          note: early() ? 'Ранний доступ для участников вебинара — до открытия общего набора · 14 дней на возврат' : `Осталось ${seats} из ${TOTAL} мест · продажи до 24 октября · 14 дней на возврат после оплаты` },
+        open: { href: CONFIG.CHECKOUT_URL, cta: 'Оплатить', cta2: 'Оплатить', short: 'Оплатить',
+          note: early() ? 'Ранний доступ для участников вебинара — до открытия общего набора · 14 дней на возврат' : `Осталось ${seats} из ${TOTAL} мест · продажи до 24 октября, 23:59 по Алматы · 14 дней на возврат после оплаты` },
         closed: { href: '#price', cta: 'Набор закрыт', cta2: 'Набор закрыт', short: 'Набор закрыт', note: 'Следующий набор — в начале 2027 года, $399 за год' }
       }[st];
       $$('[data-href="cta"]').forEach(a => a.setAttribute('href', withUtm(L.href)));
+      $$('[data-rf-pay]').forEach(el => { el.hidden = st !== 'open'; if (el.tagName === 'A') el.setAttribute('href', withUtm('https://vitaliybuzhan.ru/laboratoriya-oplata-rf')); });
       set('ctaLabel', L.cta); set('ctaLabel2', L.cta2); set('shortLabel', L.short); set('ctaNote', L.note);
       set('seatsBadge', st === 'open' ? `Осталось ${seats} из ${TOTAL} мест` : `Только ${TOTAL} мест`);
       set('seatsFinal', st === 'open' ? `осталось ${seats} из ${TOTAL} мест` : `всего ${TOTAL} мест`);
