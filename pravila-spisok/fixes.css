@@ -2,10 +2,15 @@
 .tariffs small{font-family:"PT Mono",monospace;font-size:12px;color:var(--muted)}
 .promo-box{margin:18px 0 0;padding:14px 16px;border:1px dashed var(--muted);border-radius:12px}
 .promo-box b{font-family:"PT Mono",monospace;font-size:18px;letter-spacing:.04em}
-/* таймер: цифры одной ширины, чтобы секунды не дергали строку; мигающая точка показывает, что идет отсчет */
-.timer b{font-variant-numeric:tabular-nums;white-space:nowrap}
-.timer b::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#e5484d;margin-right:10px;vertical-align:middle;animation:spk-blink 1s steps(2,start) infinite}
-@keyframes spk-blink{to{visibility:hidden}}
+/* таймер плитками */
+.spk-timer{margin:22px 0 0}
+.spk-t-label{display:block;font-family:"PT Mono",monospace;font-size:13px;color:var(--muted);margin-bottom:10px}
+.spk-cells{display:flex;gap:10px;flex-wrap:nowrap}
+.spk-cells>div{flex:0 1 92px;min-width:0;padding:12px 6px 10px;border-radius:14px;background:#fff;border:1px solid rgba(0,0,0,.08);text-align:center}
+.spk-cells b{display:block;font-size:34px;line-height:1.1;font-weight:700;font-variant-numeric:tabular-nums}
+.spk-cells small{display:block;margin-top:4px;font-family:"PT Mono",monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.spk-cells>div:last-child b{color:#e5484d}
+@media (max-width:480px){.spk-cells{gap:6px}.spk-cells b{font-size:26px}.spk-cells small{font-size:9px;letter-spacing:.03em}}
 /* Лаборатория — главная плашка во всю ширину под двумя тарифами */
 .plans .plan.lab-main{grid-column:1/-1;width:100%;box-sizing:border-box}
 .plans .plan.lab-main .plan-t{font-size:1.5em}

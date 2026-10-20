@@ -16,14 +16,27 @@ function passUtm(root) {
 }
 export default function (root) {
   passUtm(root);
-  const wb = root.querySelector('.wb'); const els = root.querySelectorAll('[data-timer]');
+  // Якорные ссылки (#choice): браузер не видит id внутри shadow root, поэтому прокрутка вручную.
+  root.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href').slice(1);
+    const el = id && root.getElementById(id);
+    if (!el) return;
+    e.preventDefault();
+    const header = root.querySelector('header');
+    const offset = (header ? header.offsetHeight : 0) + 16;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
+  });
+  const wb = root.querySelector('.wb');
+  const cd = { d: root.querySelectorAll('[data-cd="d"]'), h: root.querySelectorAll('[data-cd="h"]'), m: root.querySelectorAll('[data-cd="m"]'), s: root.querySelectorAll('[data-cd="s"]') };
   let skew = 0; try { const qa = new URLSearchParams(location.search).get('qa_now'); if (qa && !isNaN(Date.parse(qa))) skew = Date.parse(qa) - Date.now() } catch (e) {}
   const p2 = n => String(n).padStart(2, '0');
-  // Формат: «4 дн 12 ч 26 мин 09 с» — секунды видны всегда, чтобы было понятно, что таймер идет.
+  const set = (k, v) => cd[k].forEach(e => e.textContent = v);
   const tick = () => { const left = END - (Date.now() + skew);
     if (left <= 0) { wb && wb.classList.add('is-over'); return false }
-    const t = Math.floor(left / 1000), d = Math.floor(t / 86400), h = Math.floor(t % 86400 / 3600), m = Math.floor(t % 3600 / 60), s = t % 60;
-    const txt = (d ? d + ' дн ' : '') + p2(h) + ' ч ' + p2(m) + ' мин ' + p2(s) + ' с';
-    els.forEach(e => e.textContent = txt); return true };
+    const t = Math.floor(left / 1000);
+    set('d', String(Math.floor(t / 86400))); set('h', p2(Math.floor(t % 86400 / 3600))); set('m', p2(Math.floor(t % 3600 / 60))); set('s', p2(t % 60));
+    return true };
   if (tick()) { const t = setInterval(() => { if (!tick()) clearInterval(t) }, 1000) }
 }
