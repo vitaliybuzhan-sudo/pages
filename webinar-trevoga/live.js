@@ -6,7 +6,6 @@ const OPEN = Date.parse('2026-10-20T15:30:00Z');   // 20:30 Алматы · 18:3
 const START = Date.parse('2026-10-20T16:00:00Z');  // 21:00 Алматы · 19:00 МСК — старт
 const CLOSE = Date.parse('2026-10-20T17:24:49Z');  // 22:24:49 Алматы — эфир завершен, открываем ожидание записи
 const REC_EXPECTED = Date.parse('2026-10-20T18:05:00Z'); // 20.10, 23:05 Алматы — ожидаем публикацию, не подтверждаем готовность
-const REC_END = Date.parse('2026-10-21T16:00:00Z'); // 21.10, 21:00 Алматы — запись закрывается
 const SALES_END = Date.parse('2026-10-24T18:59:00Z'); // 24.10, 23:59 Алматы — продажи закрываются
 const REC = 'https://vitaliybuzhan.ru/webinar-trevoga-zapis';
 
@@ -73,7 +72,7 @@ export default async function mountLive(root) {
       redirected = true;
       location.replace(recUrl());
     }
-    const p = t < OPEN ? 'before' : t < CLOSE ? 'live' : t < REC_EXPECTED ? 'preparing' : t < REC_END ? 'pending' : t < SALES_END ? 'record-closed' : 'sales-closed';
+    const p = t < OPEN ? 'before' : t < CLOSE ? 'live' : t < REC_EXPECTED ? 'preparing' : t < SALES_END ? 'pending' : 'sales-closed';
     if (p === 'before') {
       boxes.forEach(b => {
         if (phase !== 'before') {
@@ -94,24 +93,24 @@ export default async function mountLive(root) {
         const s = a.querySelector('span'); if (s) s.textContent = 'Подключиться к эфиру в Зум'; else a.textContent = 'Войти в эфир';
         const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = 'Эфир 20 октября в 21:00 по Алматы, 19:00 по Москве';
       });
-    } else if (['preparing', 'pending', 'record-closed', 'sales-closed'].includes(p) && phase !== p) {
-      const rec = recUrl(); const open = t < REC_END; const salesOpen = t < SALES_END;
-      const title = open ? 'Готовим запись' : 'Эфир завершен';
+    } else if (['preparing', 'pending', 'sales-closed'].includes(p) && phase !== p) {
+      const rec = recUrl(); const salesOpen = t < SALES_END;
+      const title = salesOpen ? 'Готовим запись' : 'Эфир завершен';
       const waiting = p === 'preparing' ? '<p class="live-n">До ожидаемой публикации записи</p><p class="live-t" data-record-left></p>' : '';
       const note = p === 'preparing'
-        ? 'Ожидаем запись к 23:05 по Алматы. Срок доступа к записи — до 21 октября, 21:00 по Алматы.'
+        ? 'Ожидаем запись к 23:05 по Алматы. После публикации запись останется доступной.'
         : p === 'pending'
-          ? 'Запись готовится. Появится <a href="' + rec + '">здесь</a>. Срок доступа к записи — до 21 октября, 21:00 по Алматы.'
-          : salesOpen ? 'Срок доступа к записи завершился 21 октября в 21:00 по Алматы. Продажи и условия участия открыты до 24 октября, 23:59 по Алматы.' : 'Срок доступа к записи завершился 21 октября в 21:00 по Алматы. Продажи закрылись 24 октября в 23:59 по Алматы. На странице — что дальше.';
+          ? 'Запись готовится. Появится <a href="' + rec + '">здесь</a>. После публикации запись останется доступной.'
+          : 'Продажи закрылись 24 октября в 23:59 по Алматы. Запись вебинара остается доступной на странице записи.';
       boxes.forEach(b => {
         b.className = b.className.replace(/\blive-on\b/, '').trim();
-        b.innerHTML = '<p class="live-k">' + title + '</p>' + waiting + recBtn(rec, open ? 'Открыть страницу записи' : salesOpen ? 'Условия участия' : 'Открыть страницу записи') + '<p class="live-n">' + note + '</p>';
+        b.innerHTML = '<p class="live-k">' + title + '</p>' + waiting + recBtn(rec, 'Открыть страницу записи') + '<p class="live-n">' + note + '</p>';
       });
       root.querySelectorAll('[data-live-cta]').forEach(old => {
         const a = old.cloneNode(true); old.replaceWith(a);
         a.href = rec; a.removeAttribute('target'); a.removeAttribute('data-reg'); a.style.removeProperty('display');
-        const s = a.querySelector('span'); if (s) s.textContent = open ? 'Открыть страницу записи' : salesOpen ? 'Условия участия' : 'Открыть страницу записи'; else a.textContent = 'Запись эфира';
-        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = p === 'preparing' ? 'Готовим запись. Ожидаем публикацию в 23:05 по Алматы' : open ? 'Запись готовится. Появится на странице записи' : 'Запись эфира и что дальше';
+        const s = a.querySelector('span'); if (s) s.textContent = 'Открыть страницу записи'; else a.textContent = 'Запись эфира';
+        const note = a.parentElement && a.parentElement.querySelector('.cta-note'); if (note) note.textContent = p === 'preparing' ? 'Готовим запись. Ожидаем публикацию в 23:05 по Алматы' : salesOpen ? 'Запись готовится. Появится на странице записи' : 'Запись эфира и что дальше';
       });
     }
     if (p === 'live') {

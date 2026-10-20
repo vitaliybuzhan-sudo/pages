@@ -5,9 +5,9 @@
 .plans .plan.lab-main{grid-column:1/-1}
 
 /* Recording and participation have different deadlines. */
-.record-closed,.sales-closed{display:none}
-.record-over .record-open,.sales-over .sales-open{display:none!important}
-.record-over .record-closed,.sales-over .sales-closed{display:block}
+.sales-closed{display:none}
+.sales-over .sales-open{display:none!important}
+.sales-over .sales-closed{display:block}
 
 /* Waiting placeholder: publication ETA is not a video-ready signal. */
 .offer-link{margin-top:20px}
@@ -17,8 +17,14 @@
 .record-eta[hidden]{display:none}
 
 /* Keep the replay poster beside the recording without cropping its lettering. */
-.record-media{display:grid;grid-template-columns:minmax(0,1fr) 180px;gap:20px;align-items:start;margin-top:28px}
+.record-media{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:24px;align-items:center;margin-top:28px}
 .record-media .video{margin-top:0}
 .replay-poster{margin:0}
-.replay-poster img{display:block;width:100%;height:auto;max-height:330px;object-fit:contain;border-radius:12px}
-@media(max-width:600px){.record-media{grid-template-columns:1fr;gap:16px}.replay-poster img{width:auto;max-width:100%;max-height:200px;margin:auto}}
+.replay-poster img{display:block;width:100%;height:auto;max-height:430px;object-fit:contain;border-radius:12px}
+@media(max-width:800px){.record-media{grid-template-columns:1fr;gap:24px}.replay-poster img{width:min(220px,100%);max-height:400px;margin:auto}}
+
+/* Show the participation offer only after the viewer has had time with the recording. */
+.offer-wait .sales-open,.offer-wait [data-offer],.sales-over [data-offer]{display:none!important}
+.wb:not(.offer-wait) .sales-open,.wb:not(.offer-wait) [data-offer]{animation:offer-reveal .35s ease both}
+@keyframes offer-reveal{from{opacity:0}to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.wb .sales-open,.wb [data-offer]{animation:none!important}}

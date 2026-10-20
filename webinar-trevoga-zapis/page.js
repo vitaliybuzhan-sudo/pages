@@ -1,7 +1,17 @@
-// Запись: до 21.10.2026, 21:00 Алматы. Продажи и условия: до 24.10.2026, 23:59 Алматы.
+// Запись без срока закрытия. Продажи и условия: до 24.10.2026, 23:59 Алматы.
 const RECORD_EXPECTED = Date.parse('2026-10-20T23:05:00+05:00'); // Только ожидаемое время, не подтверждение готовности видео.
-const RECORD_END = Date.parse('2026-10-21T21:00:00+05:00');
 const SALES_END = Date.parse('2026-10-24T23:59:00+05:00');
+const OFFER_DELAY = 180000;
+const OFFER_START_KEY = 'webinar-trevoga-zapis:2026-10-20:offer-start';
+function offerStartedAt() {
+  const openedAt = Date.now();
+  try {
+    const saved = Number(sessionStorage.getItem(OFFER_START_KEY));
+    if (Number.isSafeInteger(saved) && saved > 0 && saved <= openedAt) return saved;
+    sessionStorage.setItem(OFFER_START_KEY, String(openedAt));
+  } catch (e) {} // Запрет хранилища не мешает таймеру на открытой странице.
+  return openedAt;
+}
 // Метки: ссылки data-link получают UTM, с которыми человек пришел (utm_source=qa_* для проверок тоже), чтобы источник дошел до заказа.
 function passUtm(root) {
   let q; try { q = new URLSearchParams(location.search) } catch (e) { return }
@@ -21,6 +31,7 @@ function passUtm(root) {
 export default function (root) {
   passUtm(root);
   const wb = root.querySelector('.wb');
+  const offerStart = offerStartedAt();
   let skew = 0;
   const format = left => {
     const h = Math.floor(left / 36e5), m = Math.floor(left % 36e5 / 6e4), s = Math.floor(left % 6e4 / 1e3);
@@ -43,10 +54,11 @@ export default function (root) {
         : 'Запись готовится. Появится здесь после публикации.';
     }
     if (wb) {
-      wb.classList.toggle('record-over', now >= RECORD_END);
+      // Время на странице не зависит от поправки серверных часов.
+      // Предложение открывается через три минуты, но не после конца продаж.
+      wb.classList.toggle('offer-wait', now >= SALES_END || Date.now() - offerStart < OFFER_DELAY);
       wb.classList.toggle('sales-over', now >= SALES_END);
     }
-    root.querySelectorAll('[data-timer]').forEach(e => e.textContent = format(Math.max(0, RECORD_END - now)));
     root.querySelectorAll('[data-sales-timer]').forEach(e => e.textContent = format(Math.max(0, SALES_END - now)));
     return now < SALES_END;
   };
