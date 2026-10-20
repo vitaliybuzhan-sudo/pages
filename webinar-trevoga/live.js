@@ -13,6 +13,7 @@ const REC = 'https://vitaliybuzhan.ru/webinar-trevoga-zapis';
 const CSS = `
 .live{border-top:1px solid #D9D1EE;padding-top:16px;display:flex;flex-direction:column;gap:10px}
 .live-k{font-family:Literata,Georgia,serif;font-style:italic;font-size:15px;color:var(--muted)}
+.live-t[hidden]{display:none}
 .live-t{font-family:"PT Mono",monospace;font-size:clamp(22px,2.4vw,28px);font-weight:700;letter-spacing:-.01em;color:var(--ink)}
 .live-n{font-size:14px;color:var(--muted);line-height:1.5}
 .live .cta{width:100%;justify-content:space-between}
@@ -72,7 +73,7 @@ export default async function mountLive(root) {
       });
     } else if (p === 'live' && phase !== 'live') {
       boxes.forEach(b => {
-        b.innerHTML = '<p class="live-k" data-k></p>' + zoomBtn('Подключиться к эфиру в Зум') + '<p class="live-n" data-n></p>';
+        b.innerHTML = '<p class="live-k" data-k></p><p class="live-t" data-start-left></p>' + zoomBtn('Подключиться к эфиру в Зум') + '<p class="live-n" data-n></p>';
       });
       root.querySelectorAll('[data-live-cta]').forEach(old => {
         const a = old.cloneNode(true); // копия без обработчика «прокрутить к форме»
@@ -106,6 +107,8 @@ export default async function mountLive(root) {
       const started = t >= START;
       boxes.forEach(b => {
         b.classList.toggle('live-on', started);
+        const timer = b.querySelector('[data-start-left]');
+        timer.hidden = started; timer.textContent = left(START - t);
         b.querySelector('[data-k]').textContent = started ? 'Мы в эфире' : 'Скоро начинаем';
         b.querySelector('[data-n]').textContent = started ? 'Заходите, мы уже в эфире.' : 'Старт в 21:00 по Алматы (19:00 по Москве), через ' + Math.max(1, Math.ceil((START - t) / 60000)) + ' мин. Можно зайти заранее.';
       });
