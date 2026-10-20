@@ -4,7 +4,7 @@ const CONFIG = {
   OPEN: Date.UTC(2026, 9, 21, 7, 0, 0),   // 21.10.2026 12:00 Алматы (10:00 МСК) — старт продаж
   CLOSE: Date.UTC(2026, 9, 24, 21, 0, 0), // 24.10.2026 24:00 МСК — конец продаж
   TOTAL_SEATS: 200,
-  SEATS_LEFT: 200,                        // обновляется вручную по мере продаж
+  SEATS_LEFT: 198,                        // обновляется вручную по мере продаж (занято 2 — 20.10.2026)
   CHECKOUT_URL: 'https://vitaliybuzhan.ru/laboratoriya-oplata', // оплата «Лаборатория — год» в Prodamus XL (refs.labPayUrl)
   REMINDER_URL: 'https://vitaliybuzhan.kz/b/107335/103107', // Telegram-бот №107335: напоминание об открытии набора 21.10 12:00 МСК (решение Виталия 15.10)
   MANAGER_URL: 'https://t.me/vitaliybuzhancom' // менеджер в Telegram (Справочник студии)
@@ -55,11 +55,13 @@ export default function (root) {
   apply();
   setInterval(apply, 1000);
 
-  // 200 мест: занятые точки — фиолетовые
+  // 200 мест: занятые точки — фиолетовые, следующее свободное место мигает (стили .seat-next в fixes.css)
   const seatGrid = $('[data-seats]');
   if (seatGrid && !seatGrid.children.length) seatGrid.innerHTML = '<span class="s230"></span>'.repeat(TOTAL);
   const sold = seatGrid ? Array.from(seatGrid.children).slice(0, TOTAL - seats) : [];
   sold.forEach(d => { d.style.background = '#6A5AA8'; });
+  const nextDot = seatGrid && seats > 0 ? seatGrid.children[TOTAL - seats] : null;
+  if (nextDot) nextDot.classList.add('seat-next');
 
   // Мобильная плашка: выезжает, когда кнопка первого экрана ушла вверх
   const bar = $('[data-sticky-bar]'), heroCta = $('section[data-screen-label^="01 "] [data-cta]');
@@ -88,9 +90,10 @@ export default function (root) {
   $$('section[data-screen-label] h2').forEach(h2 => { if (h2.closest('section[data-screen-label^="01 "]')) return; const a = prep(h2, [{ opacity: 0, transform: 'translateY(16px)' }, { opacity: 1, transform: 'none' }], { duration: 700 }); once(h2, () => a && a.play(), 0.2); });
 
   // числа набегают от 0
-  const counters = ['110', '5+', '36', '$2 858'];
+  const norm = s => s.replace(/[\s ]+/g, ' ').trim();
+  const counters = ['110', '5+', '36', '$2 858'].map(norm);
   $$('section[data-screen-label] span, section[data-screen-label] div, section[data-screen-label] b').forEach(el => {
-    if (el.children.length) return; const t = el.textContent.replace(/ /g, ' ').trim();
+    if (el.children.length) return; const t = norm(el.textContent);
     if (!counters.includes(t)) return;
     const num = parseInt(t.replace(/[^0-9]/g, ''), 10), pre = t.startsWith('$') ? '$' : '', suf = t.endsWith('+') ? '+' : '';
     const fmt = v => pre + (v >= 1000 ? String(v).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') : v) + suf;
