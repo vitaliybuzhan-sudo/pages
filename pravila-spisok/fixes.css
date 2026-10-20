@@ -2,3 +2,14 @@
 .tariffs small{font-family:"PT Mono",monospace;font-size:12px;color:var(--muted)}
 .promo-box{margin:18px 0 0;padding:14px 16px;border:1px dashed var(--muted);border-radius:12px}
 .promo-box b{font-family:"PT Mono",monospace;font-size:18px;letter-spacing:.04em}
+/* таймер: цифры одной ширины, чтобы секунды не дергали строку; мигающая точка показывает, что идет отсчет */
+.timer b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.timer b::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#e5484d;margin-right:10px;vertical-align:middle;animation:spk-blink 1s steps(2,start) infinite}
+@keyframes spk-blink{to{visibility:hidden}}
+/* Лаборатория — главная плашка во всю ширину под двумя тарифами */
+.plans .plan.lab-main{grid-column:1/-1;width:100%;box-sizing:border-box}
+.plans .plan.lab-main .plan-t{font-size:1.5em}
+/* кнопка менеджеру */
+.mgr{margin-top:22px;padding:18px 20px;border:1px solid rgba(0,0,0,.12);border-radius:16px;display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
+.mgr p{margin:0;flex:1 1 260px}
+.mgr a.mgr-btn{display:inline-block;padding:14px 22px;border-radius:12px;border:2px solid currentColor;font-weight:600;text-decoration:none;color:inherit;text-align:center}
