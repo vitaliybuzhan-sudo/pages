@@ -116,5 +116,5 @@ _tools/convert.py    конвертер Claude Design → папка стран�
 | pravila-training | vitaliybuzhan.ru/pravila-training | работает с 02.10.2026 |
 | webinar-trevoga | vitaliybuzhan.ru/svoboda-ot-trevogi | код готов 14.10.2026, ждет страницу в Продамусе (лендинг вебинара 20.10) |
 | webinar-trevoga-spasibo | vitaliybuzhan.ru/webinar-trevoga-spasibo | код готов 14.10.2026, ждет страницу в Продамусе (после формы регистрации) |
-| webinar-trevoga-zapis | vitaliybuzhan.ru/webinar-trevoga-zapis | код готов 14.10.2026, ждет страницу в Продамусе; публиковать 20.10 после эфира (запись + предложение до 21.10 21:00) |
+| webinar-trevoga-zapis | vitaliybuzhan.ru/webinar-trevoga-zapis | опубликована 20.10.2026 после эфира: запись без срока, предложение до 24.10 23:59 Алматы; в блоке Продамуса пока встроенная копия (коммит c0b00bec) вместо загрузчика — вернуть загрузчик после проверки |
 </details>
