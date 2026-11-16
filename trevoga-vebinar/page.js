@@ -18,6 +18,25 @@ export default function (root) {
     el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
   }));
 
+  // таймер до эфира: 5 декабря 2026, 13:00 МСК (10:00 UTC), 90 минут
+  const START = Date.UTC(2026, 11, 5, 10, 0, 0), END = START + 90 * 60 * 1000;
+  const cell = (n, l) => `<div style="flex:1;min-width:0;max-width:96px;background:#F5F3ED;border:1px solid #DEDBD0;border-radius:6px;padding:10px 4px;text-align:center"><div style="font-size:28px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums" data-n>${n}</div><div style="font-size:12px;color:#686A65;margin-top:6px;letter-spacing:.04em">${l}</div></div>`;
+  const note = t => `<div style="padding:14px 16px;background:#F5F3ED;border-left:4px solid #F5BC2F;border-radius:4px;font-size:16px;line-height:1.45;font-weight:600">${t}</div>`;
+  const timers = [...root.querySelectorAll('[data-timer]')];
+  const pad = n => String(n).padStart(2, '0');
+  let mode = '';
+  const tick = () => {
+    const now = Date.now();
+    if (now >= END) { if (mode !== 'after') { mode = 'after'; timers.forEach(t => t.innerHTML = note('Эфир прошёл. Запись появится на этой странице сразу после эфира или на следующий день.')) } return }
+    if (now >= START) { if (mode !== 'live') { mode = 'live'; timers.forEach(t => t.innerHTML = note('Эфир идёт прямо сейчас.')) } return }
+    let s = Math.floor((START - now) / 1000);
+    const v = [Math.floor(s / 86400), Math.floor(s % 86400 / 3600), Math.floor(s % 3600 / 60), s % 60];
+    const days = n => (n % 10 === 1 && n % 100 !== 11) ? 'день' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) ? 'дня' : 'дней';
+    if (mode !== 'count') { mode = 'count'; timers.forEach(t => t.innerHTML = `<div style="display:flex;gap:8px">${cell(v[0], days(v[0]))}${cell(pad(v[1]), 'часов')}${cell(pad(v[2]), 'минут')}${cell(pad(v[3]), 'секунд')}</div>`) }
+    else timers.forEach(t => t.querySelectorAll('[data-n]').forEach((el, i) => { const x = i ? pad(v[i]) : String(v[i]); if (el.textContent !== x) { el.textContent = x; if (!i) el.nextElementSibling.textContent = days(v[0]) } }));
+  };
+  tick(); setInterval(tick, 1000);
+
   const ID = '2njqKW3lik6hLEUcxewKBg';
   const q = new URLSearchParams(location.search);
   const boxes = [...root.querySelectorAll('[data-xlform]')];
