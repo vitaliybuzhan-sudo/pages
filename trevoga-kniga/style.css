@@ -1,0 +1,30 @@
+:host{display:block}
+[hidden]{display:none!important}
+*,*::before,*::after{box-sizing:border-box}
+
+.gp{margin:0;background:#F5F3ED;color:#171918;font-family:'Golos Text',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:inherit}a:hover{opacity:.85}
+img{max-width:100%}
+input::placeholder{color:inherit;opacity:.5}
+button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:focus-visible{outline:3px solid #8F5C0A;outline-offset:3px}
+@keyframes storeShine{0%,70%{left:-40%}100%{left:130%}}
+.v-d{display:none}
+.v-m>div{max-width:560px}
+@media (min-width:600px) and (max-width:1099px){
+.gp{background:#E4DFD2}}
+@media (min-width:1100px){.v-m{display:none}.v-d{display:block}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.x1:hover{background:#F9C94A !important;transform:translateY(-2px) !important;box-shadow:0 8px 20px -8px rgba(170,105,10,.55) !important}
+.x1:active{transform:translateY(1px) !important;box-shadow:0 0 0 #C98C0E !important}
+.x1::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:storeShine 4.5s ease-in-out 3}
+.x2:hover{background:#F9C94A !important;transform:translateY(-2px) !important;box-shadow:0 8px 20px -8px rgba(170,105,10,.55) !important}
+.x2:active{transform:translateY(1px) !important;box-shadow:0 0 0 #C98C0E !important}
+.x2::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:storeShine 4.5s ease-in-out 3}
+.x3:hover{background:#EAAE1E !important}
+.x4:hover{background:#F9C94A !important;transform:translateY(-2px) !important;box-shadow:0 8px 20px -8px rgba(170,105,10,.55) !important}
+.x4:active{transform:translateY(1px) !important;box-shadow:0 0 0 #C98C0E !important}
+.x4::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:storeShine 4.5s ease-in-out 3}
+.x5:hover{background:#F9C94A !important;transform:translateY(-2px) !important;box-shadow:0 8px 20px -8px rgba(170,105,10,.55) !important}
+.x5:active{transform:translateY(1px) !important;box-shadow:0 0 0 #C98C0E !important}
+.x5::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:storeShine 4.5s ease-in-out 3}
