@@ -28,3 +28,10 @@ button,a{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .x5:hover{background:#F9C94A !important;transform:translateY(-2px) !important;box-shadow:0 8px 20px -8px rgba(170,105,10,.55) !important}
 .x5:active{transform:translateY(1px) !important;box-shadow:0 0 0 #C98C0E !important}
 .x5::after{content:'';position:absolute;top:0;bottom:0;left:-40%;width:30%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:storeShine 4.5s ease-in-out 3}
+
+/* Компьютерная версия: фон на всю ширину окна, контент в колонке до 1280px по центру */
+.v-d{--g:max(80px,calc((100% - 1120px) / 2))}
+.v-d>div>div{padding-left:var(--g)!important;padding-right:var(--g)!important}
+.v-d>div>div:first-child{padding-left:0!important;padding-right:0!important}
+.v-d>div>div:first-child>div{padding-left:var(--g)!important;padding-right:var(--g)!important}
+#e-buy,#e-bonus{margin-left:var(--g)!important;margin-right:var(--g)!important;padding-left:56px!important;padding-right:56px!important}
